@@ -61,6 +61,7 @@
             <div class="container">
                 <div class="clean-breadcrumb">
                     <a href="#">Blog</a>
+					<!--网站访问次数<span id="page_count">0</span>-->
                 </div>
 
                 <div class="clean-searchbox">
@@ -252,9 +253,45 @@
         </div>
     </footer>
     
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/modernizr.js"></script>
 
+	<script type="text/javascript">   
+   /*
+     url中的1cf19cbebb0bdf1a 就是应用秘钥中的Secret Key
+     getTotalPV  就是云端代码中设置的方法名，注意大小写
+  */    
+  /*
+    $(function(){
+       getTotalPV();
+    });
+    function getTotalPV()
+    {
+        $.ajax({ 
+            url:"http://cloud.bmob.cn/962b3010a44ce0d1/getTotalPV", 
+            dataType:'jsonp', 
+            data:'', 
+            jsonp:'callback', 
+            success:function(result) { 
+                   //result.results[0].totalPV
+               $('#page_count').html(result.results[0].totalPV);
+               //更新次数
+               setTotalPV();
+            }     
+        });    
+    }  
+    function setTotalPV()
+    {
+      $.ajax({ 
+            url:"http://cloud.bmob.cn/962b3010a44ce0d1/setTotalPV", 
+            dataType:'jsonp', 
+            data:'', 
+            jsonp:'callback', 
+            success:function(result) {               
+            }     
+        });
+    }*/
+</script>
 </body>
 </html>
