@@ -234,6 +234,143 @@ ln -s /usr/local/php/etc/php.ini /usr/local/php/php.ini
 
 cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf
 
+### (10) 安装php扩展库：memcache
+
+tar zxvf memcache-2.2.5.tgz
+
+cd memcache-2.2.5/
+
+/usr/local/php/bin/phpize
+
+./configure --with-php-config=/usr/local/php/bin/php-config
+
+make && make install
+
+### (11) 安装php加速：eaccelerator
+
+tar -zxvf eaccelerator-eaccelerator-42067ac.tar.gz
+
+cd eaccelerator-eaccelerator-42067ac
+
+/usr/local/php/bin/phpize
+
+./configure --enable-eaccelerator=shared --with-php-config=/usr/local/php/bin/php-config
+
+make && make install
+
+注：这里安装使用的是php5.6，eaccelerator并不兼容，则略过不安装
+
+
+### （12） 修改php.ini增加memcache,ea等软件信息
+
+
+添加memcache库的位置：
+
+vim /usr/local/php/php.ini
+
+extension_dir = "/usr/local/php/lib/php/extensions/no-debug-non-zts-20100525"
+
+extension = "memcache.so"
+
+extension = "pdo_mysql.so"
+
+extension = "imagick.so"
+
+### （13）安装php扩展库:PDO_MYSQL
+
+tar zxvf PDO_MYSQL-1.0.2.tgz
+
+cd PDO_MYSQL-1.0.2/
+
+/usr/local/php/bin/phpize
+
+./configure --with-php-config=/usr/local/php/bin/php-config --with-pdo-mysql=/usr/local/mysql
+
+ln -s /usr/local/mysql/include/* /usr/local/include/
+
+make && make install
+
+
+### （14）安装ImageMagick服务
+
+tar zxvf ImageMagick.tar.gz
+
+cd ImageMagick-6.5.1-2/
+
+./configure && make && make install
+
+
+### （15）安装php扩展库：imagick
+
+tar zxvf imagick-3.1.2.tgz
+
+cd imagick-3.1.2/
+
+/usr/local/php/bin/phpize
+
+ln -s /usr/local/include/ImageMagick-6 /usr/local/include/ImageMagick
+
+./configure --with-php-config=/usr/local/php/bin/php-config
+
+make && make install
+
+### （16）添加WWW用户，为系统运行nginx专用用户： 
+
+/usr/sbin/groupadd www
+
+/usr/sbin/useradd -g www www
+
+mkdir -p /var/log/nginx
+
+chmod +w /var/log/nginx
+
+chown -R www:www /var/log/nginx
+
+mkdir -p /data0/www
+
+chmod +w /data0/www
+
+chown -R www:www /data0/www
+
+### （17）修改php-fpm.conf的配置：
+
+vim /usr/local/php/etc/php-fpm.conf
+
+#去掉/更改 配置文件中的;
+
+pm.max_children = 64
+
+pm.start_servers = 20
+
+pm.min_spare_servers = 5
+
+pm.max_spare_servers = 35
+
+pm.max_requests = 1024
+
+user = www
+
+group = www
+
+
+#检查语法是否正确
+
+/usr/local/php/sbin/php-fpm -t
+
+NOTICE: configuration file /usr/local/php/etc/php-fpm.conf test is successful
+
+看到上面的信息 证明php配置文件正常，可以启动了。
+
+### （18） 添加环境变量：
+
+echo "export PATH=\$PATH:/usr/local/php/sbin/" >>/etc/profile
+
+echo "export PATH=\$PATH:/usr/local/php/bin/" >>/etc/profile
+
+./etc/profile
+
+	注意：这里最后一步报错-bash: ./etc/profile: Permission denied
+
 
 ### 参考链接 1、 [centos 6.5 搭建lnmp环境](http://blog.csdn.net/u010098331/article/details/50749587)
 
@@ -258,11 +395,13 @@ wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.21.tar.gz
 
 wget http://netcologne.dl.sourceforge.net/project/mysql.mirror/MySQL%205.5.30/mysql-5.5.30.tar.gz（链接已失效，改为使用Sohu的镜像源）
 
-wget http://mynginx.googlecode.com/files/ImageMagick.tar.gz
+wget http://mirror.aarnet.edu.au/pub/imagemagick/ImageMagick-6.9.8-0.tar.gz
+
+wget http://pecl.php.net/get/imagick-3.1.2.tgz
 
 wget http://us3.php.net/get/php-5.4.21.tar.gz/from/cn2.php.net/mirror
 
-wget https://lnamp-web-server.googlecode.com/files/eaccelerator-eaccelerator-42067ac.tar.gz
+wget http://soft.vpser.net/web/eaccelerator/eaccelerator-eaccelerator-42067ac.tar.gz
 
 wget http://nginx.org/download/nginx-1.4.0.tar.gz
 	
