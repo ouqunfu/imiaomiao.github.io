@@ -1,0 +1,8 @@
+db.createUser({user:'root',pwd:'123456',roles:['userAdminAnyDatabase','dbAdminAnyDatabase']})
+
+
+#带认证、后台运行等启动mongodb服务
+mongod --dbpath=/usr/local/mongodb/data/ --logpath=/usr/local/mongodb/dblogs --logappend --fork --auth
+
+#无认证启动mongodb服务，用于创建管理员用户
+mongod --dbpath=/usr/local/mongodb/data/ --logpath=/usr/local/mongodb/dblogs --logappend --fork

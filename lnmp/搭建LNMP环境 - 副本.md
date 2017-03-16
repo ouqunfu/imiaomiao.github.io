@@ -367,9 +367,143 @@ echo "export PATH=\$PATH:/usr/local/php/sbin/" >>/etc/profile
 
 echo "export PATH=\$PATH:/usr/local/php/bin/" >>/etc/profile
 
-./etc/profile
+. /etc/profile
 
 	注意：这里最后一步报错-bash: ./etc/profile: Permission denied
+
+	原因是指令 . /etc/profile 点和斜杠之间应该是有空格的，这里漏掉了
+
+### （19）安装nginx的 pcre
+
+卸载PCRE
+
+rpm -qa pcre
+
+rpm -e --nodeps pcre
+
+tar -zxvf pcre2-10.20.tar.gz
+
+cd pcre2-10.20 && ./configure --prefix=/usr/local/pcre && make && make install
+
+	注意：此处configure出错
+	grep: error while loading shared libraries: libpcre.so.0: cannot open shared object file: No such file or directory
+	原因是libpcre.so.0文件没有了
+
+	解决方法：
+
+    改用yum源安装 yum install pcre
+
+
+### （20）编译安装 nginx
+
+tar -zxvf nginx-1.10.1.tar.gz
+
+cd nginx-1.10.1/
+
+./configure --user=www --group=www --prefix=/usr/local/nginx --sbin-path=/usr/local/nginx/sbin/nginx --conf-
+
+path=/usr/local/nginx/conf/nginx.conf --with-http_stub_status_module --with-http_ssl_module --with-
+ 
+pcre=/usr/local/pcre --lock-path=/var/run/nginx.lock --pid-path=/var/run/nginx.pid
+
+make && make install
+
+	注意：make 报错
+	make -f objs/Makefile
+	make[1]: Entering directory `/home/ferry/www/service-file/nginx-1.10.1'
+	cd /usr/local/pcre \
+		&& if [ -f Makefile ]; then make distclean; fi \
+		&& CC="cc" CFLAGS="-O2 -fomit-frame-pointer -pipe " \
+		./configure --disable-shared 
+	/bin/sh: line 2: ./configure: No such file or directory
+	make[1]: *** [/usr/local/pcre/Makefile] Error 127
+	make[1]: Leaving directory `/home/ferry/www/service-file/nginx-1.10.1'
+	make: *** [build] Error 2
+
+	解决：--with-pcre=DIR 是指 pcre 的源码目录，而不是 pcre 的安装目录
+	所以修改--with-pcre=/usr/local/pcre 为 --with-pcre=/home/ferry/www/service-file/pcre2-10.20
+
+	再报错
+	cc: /home/ferry/www/service-file/pcre2-10.20/.libs/libpcre.a: No such file or directory
+	make[1]: *** [objs/nginx] Error 1
+	make[1]: Leaving directory `/home/ferry/www/service-file/nginx-1.10.1'
+	make: *** [build] Error 2
+
+	解决方案：
+
+	mkdir -p /home/ferry/www/service-file/pcre2-10.20/.libs
+	cp /usr/lib/libpcre.a /home/ferry/www/service-file/pcre2-10.20/libpcre.a
+	cp /usr/lib/libpcre.a /home/ferry/www/service-file/pcre2-10.20/libpcre.la
+	cp /usr/lib/libpcre.a /home/ferry/www/service-file/pcre2-10.20/.libs/libpcre.a
+	cp /usr/lib/libpcre.a /home/ferry/www/service-file/pcre2-10.20/.libs/libpcre.la
+
+编译成功
+
+### （21）修改nginx配置文件
+
+user www;
+
+events {
+
+use epoll;
+
+worker_connections  1024;
+
+}
+
+	#注意 把/scripti改为$document_root$  不然就是 file not found                                                     
+                                                                                                                 
+location ~ \.php$ {
+
+root           html;
+
+fastcgi_pass   127.0.0.1:9000;
+
+fastcgi_index  index.php;
+
+fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+
+include        fastcgi_params;
+
+}
+
+### （22）写一个php的测试文件：phpinfo
+
+cat >>/usr/local/nginx/html/index.php<<EOF
+
+<?php             
+
+phpinfo();          
+
+?>            
+
+EOF
+
+### （23）添加开机启动:
+
+echo "/usr/local/php/sbin/php-fpm" >> /etc/rc.local
+
+echo "/usr/local/nginx/sbin/nginx" >> /etc/rc.local
+
+echo "/etc/init.d/mysqld restart" >> /etc/rc.local
+
+### （24）启动nginx 启动php-fpm 开放防火墙iptables 80端口
+
+### （25）浏览器访问：
+
+http://ip/index.php
+
+## 拓展
+
+### 1.关于/etc/init.d
+
+/etc/init.d目录包含许多系统各种服务的启动和停止脚本
+
+### 2.关于/etc/rc.local
+
+该脚本是在系统初始化级别脚本运行之后再执行的，因此可以安全地在里面添加你想在系统启动之后执行的脚本。
+
+
 
 
 ### 参考链接 1、 [centos 6.5 搭建lnmp环境](http://blog.csdn.net/u010098331/article/details/50749587)
