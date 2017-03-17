@@ -87,7 +87,7 @@ body .tid-active{
 body .record_fields .icon {
   position: absolute;
   z-index: 1;
-  left: 36px;
+  left: 25px;
   top: 8px;
   opacity: .5;
 }
@@ -122,6 +122,9 @@ body .border-top{
 	border: none;
 	border-top: 1px solid #393d52;
 }
+body .record_fields_tid{
+	overflow: hidden;
+}
 
 body .record_fields_tid .swiper-wrapper{
 	color: #e6e7ef;
@@ -130,18 +133,22 @@ body .record_fields_tid .swiper-wrapper{
 }
 body .record_fields_tid .swiper-wrapper .swiper-slide{
 	padding:10px;
+	width:50px;
+}
+body .record_fields_money{
+	margin: 0 auto;
+	margin-bottom: 5px;
+	border:none;
+	border: 1px solid #fff;
 }
 body .record_fields .money, body .record_fields textarea {
   color: #e6e7ef;
   width: 200px;
-  margin-top: -2px;
+  width: 80%;
+  margin-left: 19%;
   background: #32364a;
-  left: 0;
   padding: 10px 65px;
-  border-top: 2px solid #393d52;
-  border-bottom: 2px solid #393d52;
-  border-right: none;
-  border-left: none;
+  border: none;
   outline: none;
   font-family: 'Gudea', sans-serif;
   box-shadow: none;
