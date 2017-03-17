@@ -26,18 +26,10 @@ body p {
   color: #5B5E6F;
   font-size: 10px;
 }
-body .testtwo {
-  left: -320px !important;
-}
-body .test {
-  box-shadow: 0px 20px 30px 3px rgba(0, 0, 0, 0.55);
-  pointer-events: none;
-  top: -100px !important;
-  -webkit-transform: rotateX(70deg) scale(0.8) !important;
-          transform: rotateX(70deg) scale(0.8) !important;
-  opacity: .6 !important;
-  -webkit-filter: blur(1px);
-          filter: blur(1px);
+body button{
+	border:none;
+	border:1px solid #e6e7ef;
+	border-radius: 4px;
 }
 body .record {
   opacity: 1;
@@ -81,6 +73,17 @@ body .record_title {
 body .record_fields{
 	padding: 0 7%;
 }
+body .active{
+	background: #545a77;
+}
+body .nonactive{
+	background: #2a2d3c;
+}
+body .tid-active{
+	background: #545a77;
+	border: 1px solid #e6e7ef;
+    border-radius: 10px;
+}
 body .record_fields .icon {
   position: absolute;
   z-index: 1;
@@ -89,13 +92,48 @@ body .record_fields .icon {
   opacity: .5;
 }
 body .record_fields textarea {
-	max-width:190px;
+	max-width:200px;
 	max-height:200px;
 	height:100px;
 }
-body .record_fields input[type='text'], body .record_fields textarea {
+body .record_fields_money, body .record_fields_remark, body .record_fields_order_type, body .record_fields_tid {
+  position: relative;
+}
+body .record_fields_order_type button{
+	color: #e6e7ef;
+	width: 159px;
+	padding: 10px 0;
+	margin-bottom:2px;
+	outline: none;
+	font-family: 'Gudea', sans-serif;
+	box-shadow: none;
+}
+body .record_fields_order_type .button-left{
+	border-bottom-right-radius: 0;
+	border-top-right-radius: 0;
+}
+body .record_fields_order_type .button-right{
+	margin-left:-4px;
+	border-left: none;
+	border-bottom-left-radius: 0;
+	border-top-left-radius: 0;
+}
+body .border-top{
+	border: none;
+	border-top: 1px solid #393d52;
+}
+
+body .record_fields_tid .swiper-wrapper{
+	color: #e6e7ef;
+	padding: 10px;
+	margin: 5px 0;
+}
+body .record_fields_tid .swiper-wrapper .swiper-slide{
+	padding:10px;
+}
+body .record_fields .money, body .record_fields textarea {
   color: #e6e7ef;
-  width: 190px;
+  width: 200px;
   margin-top: -2px;
   background: #32364a;
   left: 0;
@@ -107,9 +145,6 @@ body .record_fields input[type='text'], body .record_fields textarea {
   outline: none;
   font-family: 'Gudea', sans-serif;
   box-shadow: none;
-}
-body .record_fields_money, body .record_fields_remark {
-  position: relative;
 }
 body .record_fields_submit {
   position: relative;

@@ -8,6 +8,7 @@
 
 <link rel="stylesheet" type="text/css" href="css/default.css">
 
+<link rel="stylesheet" href="css/swiper.min.css" type="text/css">
 <!--必要样式-->
 <link rel="stylesheet" type="text/css" href="css/styles2.css">
 
@@ -18,11 +19,38 @@
 </div>
 <div class='record'>
   <div class='record_fields'>
+	<div class="record_fields_order_type">
+		<button order_type="0" class="button-left active">支出</button>
+		<button order_type="1" class="button-right nonactive">收入</button>
+		<input type="hidden" name="order_type" id="order_type" value="0">
+	</div>
+	<input type="hidden" name="tid" id="tid" value="1">
+	<div class="record_fields_tid swiper-container-0" id="expenditure">
+		<div class="swiper-wrapper">
+			<div tid="1" class="swiper-slide tid-active">餐饮</div>
+			<div tid="2" class="swiper-slide">交通</div>
+			<div tid="3" class="swiper-slide">购物</div>
+			<div tid="4" class="swiper-slide">医药</div>
+			<div tid="5" class="swiper-slide">投资</div>
+			<div tid="0" class="swiper-slide">其他</div>
+			<div tid="0" class="swiper-slide"></div>
+			<div tid="0" class="swiper-slide"></div>
+		</div>
+	</div>
+	<div class="record_fields_tid swiper-container-1" id="income" style="display:none;">
+		<div class="swiper-wrapper">
+			<div tid="5" class="swiper-slide tid-active">工资</div>
+			<div tid="6" class="swiper-slide">奖金</div>
+			<div tid="7" class="swiper-slide">其他</div>
+			<div tid="7" class="swiper-slide"></div>
+			<div tid="7" class="swiper-slide"></div>
+		</div>
+	</div>
 	<div class='record_fields_money'>
 	  <div class='icon'>
-		<img src='img/user_icon_copy.png'>
+		<img src='img/currency_black_yuan.png'>
 	  </div>
-	  <input placeholder='金额' type='text'>
+	  <input placeholder='0.00' name="money" class="money" type='number'>
 		<div class='validation'>
 		  <img src='img/tick.png'>
 		</div>
@@ -30,9 +58,9 @@
 	</div>
 	<div class='record_fields_remark'>
 	  <div class='icon'>
-		<img src='img/lock_icon_copy.png'>
+		<img src='img/writing.png'>
 	  </div>
-	  <textarea style="max-width: 190px;" placeholder='备注' ></textarea>
+	  <textarea style="max-width: 200px;" placeholder='备注' ></textarea>
 	  <div class='validation'>
 		<img src='img/tick.png'>
 	  </div>
@@ -43,6 +71,8 @@
   </div>
 </div>
 
-
+<script src="js/swiper.min.js"></script>
+<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+<script src="js/add_record.js"></script>
 </body>
 </html>
