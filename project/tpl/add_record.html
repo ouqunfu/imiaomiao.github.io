@@ -12,13 +12,15 @@
 <!--必要样式-->
 <link rel="stylesheet" type="text/css" href="css/styles2.css?3">
 
-<link rel="stylesheet" type="text/css" href="date-plugin/datedropper.css">
-<link rel="stylesheet" type="text/css" href="date-plugin/timedropper.min.css">
+
+
+<link href="mobiscroll/css/mobiscroll.css" rel="stylesheet" />
+<link href="mobiscroll/css/mobiscroll_date.css" rel="stylesheet" />
 </head>
 <body>
 <div class="record_title">
 	<span>记账</span>
-	<input type="text" id="pickdate" value="" />
+	<input type="text" id="pickdate" value="" readonly />
 </div>
 <div class='record'>
   <div class='record_fields'>
@@ -88,18 +90,30 @@
   </div>
 </div>
 
-<script src="js/swiper.min.js"></script>
-<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
-<script src="js/add_record.js"></script>
-<script type="text/javascript" src="date-plugin/jquery-1.12.3.min.js"></script>
-<script src="date-plugin/datedropper.min.js"></script>
-<script src="date-plugin/timedropper.min.js"></script>
-<script>
-$("#pickdate").dateDropper({
-	color:'#f87a54',
-	animate: false,
-	format: 'Y年m月d日',
-	maxYear: '2020'
+<script src="mobiscroll/js/jquery.min.js"></script> 
+<script src="mobiscroll/js/mobiscroll_date.js" charset="gb2312"></script> 
+<script src="mobiscroll/js/mobiscroll.js"></script> 
+<script type="text/javascript">
+$(function () {
+	var currYear = (new Date()).getFullYear();	
+	var opt={};
+	opt.date = {preset : 'date'};
+	opt.datetime = {preset : 'datetime'};
+	opt.time = {preset : 'time'};
+	opt.default = {
+		theme: 'android-ics light', //皮肤样式
+		display: 'modal', //显示方式 
+		mode: 'scroller', //日期选择模式
+		dateFormat: 'yy年m月dd日',
+		lang: 'zh',
+		showNow: true,
+		nowText: "今天",
+		startYear: currYear - 10, //开始年份
+		endYear: currYear + 10 //结束年份
+	};
+
+	$("#pickdate").mobiscroll($.extend(opt['date'], opt['default']));
+
 });
 </script>
 <script type="text/javascript">
@@ -129,7 +143,7 @@ function date()
     case 0:week="星期日 ";break;
     default:week="";break;
   }*/
-  $("#pickdate").val(year+"年"+month+"月"+day+"日");
+	$("#pickdate").val(year+"年"+month+"月"+day+"日");
 }
 
 </script>
