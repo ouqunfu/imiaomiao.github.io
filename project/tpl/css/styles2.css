@@ -98,8 +98,9 @@ body .record_fields textarea {
 	max-height:200px;
 	height:100px;
 }
-body .record_fields_money, body .record_fields_remark, body .record_fields_order_type, body .record_fields_tid {
+body .record_fields_money, body .record_fields_remark, body .record_fields_order_type, body .record_fields_tid,body .record_fields_payment {
   position: relative;
+  font-size:14px;
 }
 body .record_fields_order_type button{
 	color: #e6e7ef;
@@ -109,6 +110,8 @@ body .record_fields_order_type button{
 	outline: none;
 	font-family: 'Gudea', sans-serif;
 	box-shadow: none;
+	border: none;
+	font-size: 14px;
 }
 body .record_fields_order_type .button-left{
 	border-bottom-right-radius: 0;
@@ -124,19 +127,27 @@ body .border-top{
 	border: none;
 	border-top: 1px solid #393d52;
 }
-body .record_fields_tid{
+body .record_fields_tid,body .record_fields_payment{
 	overflow: hidden;
 }
 
-body .record_fields_tid .swiper-wrapper{
+body .record_fields_tid .swiper-wrapper,body .record_fields_payment .swiper-wrapper{
 	color: #e6e7ef;
 	padding: 10px;
 	margin: 5px 0;
 }
-body .record_fields_tid .swiper-wrapper .swiper-slide{
-	padding:10px;
+body .record_fields_tid .swiper-wrapper .swiper-slide,body .record_fields_payment .swiper-wrapper .swiper-slide{
+	padding:5px;
 	width:50px;
 }
+body .record_fields_payment{
+	font-size: 14px;
+    padding: 10px 0;
+	margin-bottom: 5px;
+}
+/*body .record_fields_payment .swiper-wrapper .swiper-slide{
+	padding:5px;
+}*/
 body .record_fields_money,body .record_fields_remark{
 	margin: 0 auto;
 	margin-bottom: 5px;
