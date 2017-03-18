@@ -156,6 +156,7 @@ body .record_fields .money, body .record_fields textarea {
   outline: none;
   font-family: 'Gudea', sans-serif;
   box-shadow: none;
+  line-height: 18px;
 }
 body .record_fields_submit {
   position: relative;
