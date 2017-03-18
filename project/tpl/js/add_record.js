@@ -1,3 +1,36 @@
+var docElm = document.documentElement;
+ 
+//W3C 
+ 
+if (docElm.requestFullscreen) { 
+ 
+  docElm.requestFullscreen(); 
+ 
+}
+ 
+//FireFox 
+ 
+else if (docElm.mozRequestFullScreen) { 
+ 
+  docElm.mozRequestFullScreen(); 
+ 
+}
+ 
+//Chrome等 
+ 
+else if (docElm.webkitRequestFullScreen) { 
+ 
+  docElm.webkitRequestFullScreen(); 
+ 
+}
+ 
+//IE11
+ 
+else if (elem.msRequestFullscreen) {
+ 
+ elem.msRequestFullscreen();
+ 
+}
 $(document).ready(function(){
 	$(".record_fields_order_type button").click(function(){
 		$(this).siblings().removeClass("active").addClass("nonactive");
