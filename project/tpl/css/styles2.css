@@ -46,7 +46,7 @@ body .record {
   margin: auto;
   text-align:center;
   padding: 5% 0;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
 }
 body .record .validation {
   position: absolute;
@@ -98,6 +98,16 @@ body .tid-active{
 	border: 1px solid #e6e7ef;
     border-radius: 10px;
 }
+body .set-back-color{
+	background: #32364a;
+    color: #e6e7ef;
+}
+body .fl-l{
+	float: left;
+}
+body .fl-r{
+	float: right;
+}
 body .record_fields .icon {
   position: absolute;
   z-index: 1;
@@ -110,7 +120,7 @@ body .record_fields textarea {
 	max-height:200px;
 	height:100px;
 }
-body .record_fields_money, body .record_fields_remark, body .record_fields_order_type, body .record_fields_tid,body .record_fields_payment {
+body .record_fields_money, body .record_fields_remark, body .record_fields_order_type, body .record_fields_tid,body .record_fields_payment,body .record_fields_list{
   position: relative;
   font-size:14px;
 }
@@ -180,6 +190,7 @@ body .record_fields .money, body .record_fields textarea {
   font-family: 'Gudea', sans-serif;
   box-shadow: none;
   line-height: 18px;
+  font-size: 18px;
 }
 body .record_fields_submit {
   position: relative;
@@ -214,4 +225,28 @@ body .record_fields_submit input:active {
           transition-property: background,color;
   -webkit-transition-duration: .2s;
           transition-duration: .2s;
+}
+
+body .record_fields_list{
+	margin-bottom:5px;
+}
+body .record_fields_list ul li{
+	padding: 10px 0;
+	height:20px;
+	border-bottom: 1px solid #58595f;
+    line-height: 20px;
+}
+body .record_fields_list ul li:last-child{
+	border:none;
+}
+body .record_fields_list ul li .tid-type{
+	margin-left:35px;
+}
+i{
+	font-style:normal;
+}
+body .record_fields_list ul li .list-money{
+	margin-right:35px;
+	color: #ea3434;
+	font-family: cursive;
 }
