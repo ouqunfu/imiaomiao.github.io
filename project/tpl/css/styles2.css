@@ -1,9 +1,5 @@
 body {
-  -webkit-perspective: 800px;
-          perspective: 800px;
-  height: 100vh;
-  margin: 0;
-  overflow: hidden;
+  margin: 0 auto;
   font-family: 'Gudea', sans-serif;
   background: #35394a;
   /* Old browsers */
@@ -19,7 +15,6 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#35394a', endColorstr='#1f222e',GradientType=1 );
   /* IE6-9 fallback on horizontal gradient */
   
-  /*background: #827a7a;*/
 }
 body ::-webkit-input-placeholder {
   color: #4E546D;
@@ -51,6 +46,7 @@ body .record {
   margin: auto;
   text-align:center;
   padding: 10% 0;
+  margin-bottom: 50px;
 }
 body .record .validation {
   position: absolute;
