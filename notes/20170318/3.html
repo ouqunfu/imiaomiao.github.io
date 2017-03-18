@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>centos 6.5 X86_64 VMware下编译安装搭建lnmp，架构web环境</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+
+    <!-- Font-Awesome -->
+    <link rel="stylesheet" href="../../css/font-awesome/css/font-awesome.min.css">
+
+    <!-- Google Webfonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600|PT+Serif:400,400italic' rel='stylesheet' type='text/css'>
+
+    <!-- Styles -->
+   <link rel="stylesheet" href="../../css/style.css" id="theme-styles">
+
+    <!--[if lt IE 9]>      
+        <script src="js/vendor/google/html5-3.6-respond-1.1.0.min.js"></script>
+    <![endif]-->
+
+    
+</head>
+<body>
+    <header>
+        <div class="widewrapper masthead">
+            <div class="container">
+                <a href="index.html" id="logo">
+                    <img src="../../img/logo.png" alt="clean Blog">
+                </a>
+
+                <div id="mobile-nav-toggle" class="pull-right">
+                    <a href="#" data-toggle="collapse" data-target=".clean-nav .navbar-collapse">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </div>
+
+                <!--
+				<nav class="pull-right clean-nav">
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav nav-pills navbar-nav">
+                          
+                             <li>
+                                <a href="index.html">Home</a>
+                            </li>
+                            <li>
+                                <a href="about.html">About</a>
+                            </li>
+                            <li>
+                                <a href="contact.html">Contact</a>
+                            </li>                       
+                        </ul>
+                    </div>
+                </nav>   
+-->				
+
+            </div>
+        </div>
+
+        <div class="widewrapper subheader">
+            <div class="container">
+                <div class="clean-breadcrumb">
+                    <a href="#">Blog</a>
+                    <span class="separator">&#x2F;</span>
+                    <a href="#">notes</a>
+                    <span class="separator">&#x2F;</span>
+                    <a href="#">centos 6.5 X86_64 VMware下编译安装搭建lnmp，架构web环境</a>
+                </div>
+
+              
+                <div class="clean-searchbox">
+                    <form action="#" method="get" accept-charset="utf-8">
+                       
+                        <input class="searchfield" id="searchbox" type="text" placeholder="Search">
+                         <button class="searchbutton" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="widewrapper main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 blog-main">
+                    <article class="blog-post">
+                        <header>
+                           
+                            <div class="lead-image">
+                                <img src="../../img/3.jpg" alt="" class="img-responsive">
+                                
+                            </div>
+                        </header>
+                        <div class="body">
+                            <h1>centos 6.5 X86_64 VMware下编译安装搭建lnmp，架构web环境</h1>
+                            <div class="meta">
+                                <i class="fa fa-user"></i> Olver <i class="fa fa-calendar"></i>18/03/2017
+								<!--<i class="fa fa-comments"></i><span class="data"><a href="#comments"></a></span>-->
+                            </div>
+                            <p>
+								LNMP代表的就是：Linux系统下Nginx+MySQL+PHP这种网站服务器架构。
+								Linux是一类Unix计算机操作系统的统称，是目前最流行的免费操作系统。代表版本有：debian、centos、ubuntu、fedora、gentoo等。
+								Nginx是一个高性能的HTTP和反向代理服务器，也是一个IMAP/POP3/SMTP代理服务器。
+								Mysql是一个小型关系型数据库管理系统。
+								PHP是一种在服务器端执行的嵌入HTML文档的脚本语言。
+								这四种软件均为免费开源软件，组合到一起，成为一个免费、高效、扩展性强的网站服务系统。
+							</p>
+							<h2>1、centos 6.5 X86_64 VMware下编译安装搭建lnmp，架构web环境</h2>
+							<p> 建议安装顺序：</p>
+							<p> MySQL-------》》编译PHP----》》编译nginx</p>
+							<h3>（1）检查编译安装环境</h3>
+							<h4> #查看httpd、mysql、php是否安装</h4>
+							<h4> [root@localhost ~]#rpm -q httpd mysql php</h4>
+							<h4> #如果已安装则卸载:</h4>
+							<h4> [root@localhost ~]#rpm -e httpd --nodeps</h4>
+							<h4> [root@localhost ~]#rpm -e mysql --nodeps</h4>
+							<h4> [root@localhost ~]#rpm -e php --nodeps</h4>
+							<h4> #删除相关文件</h4>
+							<h4> find / -name php mysql nginx</h4>
+							<h4> rm -rf ***</h4>
+							<h3>（2）安装解决依赖关系</h3>
+							<pre><code>yum install -y wget gcc gcc-c++ autoconf libjpeg libjpeg-devel perl perl* perl-CPAN libpng libpng-devel freetype freetype-devel libxml2 libxml2-devel zlib zlib-devel glibc glibc-devel glib2 glib2-devel bzip2 bzip2-devel ncurses ncurses-devel curl curl-devel e2fsprogs e2fsprogs-devel krb5 krb5-devel libidn libidn-devel openssl openssl-devel openldap openldap-devel nss_ldap openldap-clients openldap-servers png jpeg autoconf gcc cmake make gcc-c++ gcc ladp ldap* ncurses ncurses-devel zlib zlib-devel zlib-static pcre pcre-devel pcre-static openssl openssl-devel perl libtoolt openldap-devel libxml2-devel ntpdate cmake gd* gd2 ImageMagick-devel jpeg jpeg* pcre-dev* fontconfig libpng libxml2 zip unzip gzip
+							</code></pre>
+
+							<p>yum install -y wget gcc gcc-c++ autoconf libjpeg libjpeg-devel perl perl* perl-CPAN libpng libpng-devel freetype </p>
+							<p>freetype-devel libxml2 libxml2-devel zlib zlib-devel glibc glibc-devel glib2 glib2-devel bzip2 bzip2-devel </p>
+							<p>ncurses ncurses-devel curl curl-devel e2fsprogs e2fsprogs-devel krb5 krb5-devel libidn libidn-devel openssl </p>
+							<p>openssl-devel openldap openldap-devel nss_ldap openldap-clients openldap-servers png jpeg autoconf gcc cmake </p>
+							<p>make gcc-c++ gcc ladp ldap* ncurses ncurses-devel zlib zlib-devel zlib-static pcre pcre-devel pcre-static </p>
+							<p>openssl openssl-devel perl libtoolt openldap-devel libxml2-devel ntpdate cmake gd* gd2 ImageMagick-devel jpeg </p>
+							<p>jpeg* pcre-dev* fontconfig libpng libxml2 zip unzip gzip</p>
+							<h3>（3）安装mysql-5.5.53</h3>
+							<p>下载mysql-5.5.53.tar.gz</p>
+							<p>groupadd mysql</p>
+							<p>useradd mysql -g mysql</p>
+							<p>tar -zxvf mysql-5.5.30.tar.gz</p>
+							<p>cd mysql-5.5.30</p>
+							<p>cmake -DCMAKE<em>INSTALL</em>PREFIX=/usr/local/mysql \</p>
+							<p>-DMYSQL<em>UNIX</em>ADDR=/tmp/mysql.sock \</p>
+							<p>-DEXTRA_CHARSETS=all \</p>
+							<p>-DDEFAULT_CHARSET=utf8 \</p>
+							<p>-DDEFAULT<em>COLLATION=utf8</em>general_ci \</p>
+							<p>-DWITH<em>EXTRA</em>CHARSETS:STRING=utf8,gbk \</p>
+							<p>-DWITH<em>INNOBASE</em>STORAGE_ENGINE=1 \</p>
+							<p>-DWITH_READLINE=1 \</p>
+							<p>-DENABLED<em>LOCAL</em>INFILE=1 \</p>
+							<p>-DMYSQL_DATADIR=/data/mysql/ \</p>
+							<p>-DMYSQL_USER=mysql \</p>
+							<p>-DMYSQL<em>TCP</em>PORT=3306	</p>
+							<pre><code>cmake -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DMYSQL_UNIX_ADDR=/tmp/mysql.sock -DEXTRA_CHARSETS=all -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci -DWITH_EXTRA_CHARSETS:STRING=utf8,gbk -DWITH_INNOBASE_STORAGE_ENGINE=1 -DWITH_READLINE=1 -DENABLED_LOCAL_INFILE=1 -DMYSQL_DATADIR=/data/mysql/ -DMYSQL_USER=mysql -DMYSQL_TCP_PORT=3306
+							</code></pre>
+
+							<p>make &amp;&amp; make install</p>
+							<p>mkdir -p /data/mysql</p>
+							<p>chown mysql.mysql -R /data/mysql</p>
+							<p>mv /etc/my.cnf /etc/my.cnf-old</p>
+							<p>cp support-files/my-medium.cnf /etc/my.cnf</p>
+							<p>chmod 755 scripts/mysql<em>install</em>db</p>
+							<p>scripts/mysql<em>install</em>db  --user=mysql  --basedir=/usr/local/mysql --datadir=/data/mysql/</p>
+							<p>cp support-files/mysql.server /etc/init.d/mysqld</p>
+							<p>chmod 755 /etc/init.d/mysqld</p>
+							<p>chkconfig mysqld on</p>
+							<p>service mysqld start</p>
+							<p>设置mysql的root密码为123456</p>
+							<p>/usr/local/mysql/bin/mysqladmin -u root password '123456'</p>
+							<h3>（4）安装php的扩展库：libiconv</h3>
+							<p>tar zxvf libiconv-1.13.tar.gz</p>
+							<p>cd libiconv-1.13/</p>
+							<p>./configure --prefix=/usr/local</p>
+							<p>make &amp;&amp; make install</p>
+							<h3>（5）安装php扩展库：libmcrypt</h3>
+							<p>tar zxvf libmcrypt-2.5.8.tar.gz</p>
+							<p>cd libmcrypt-2.5.8/</p>
+							<p>./configure</p>
+							<p>make &amp;&amp; make install</p>
+							<p>/sbin/ldconfig</p>
+							<h4>注：这里不要退出去了。</h4>
+							<p>cd libltdl/</p>
+							<p>./configure --enable-ltdl-install</p>
+							<p>make &amp;&amp; make install</p>
+							<h3>（6） 安装php扩展库：mhash</h3>
+							<p>tar zxvf mhash-0.9.9.9.tar.gz</p>
+							<p>cd mhash-0.9.9.9/</p>
+							<p>./configure</p>
+							<p>make &amp;&amp; make install</p>
+							<h3>（7） 做库的软连接：</h3>
+							<p>ln -s /usr/local/lib/libmcrypt.la /usr/lib/libmcrypt.la</p>
+							<p>ln -s /usr/local/lib/libmcrypt.so /usr/lib/libmcrypt.so</p>
+							<p>ln -s /usr/local/lib/libmcrypt.so.4 /usr/lib/libmcrypt.so.4</p>
+							<p>ln -s /usr/local/lib/libmcrypt.so.4.4.8 /usr/lib/libmcrypt.so.4.4.8</p>
+							<p>ln -s /usr/local/lib/libmhash.a /usr/lib/libmhash.a</p>
+							<p>ln -s /usr/local/lib/libmhash.la /usr/lib/libmhash.la</p>
+							<p>ln -s /usr/local/lib/libmhash.so /usr/lib/libmhash.so</p>
+							<p>ln -s /usr/local/lib/libmhash.so.2 /usr/lib/libmhash.so.2</p>
+							<p>ln -s /usr/local/lib/libmhash.so.2.0.1 /usr/lib/libmhash.so.2.0.1</p>
+							<p>ln -s /usr/lib64/libldap* /usr/lib/</p>
+							<h3>(8) 安装php扩展包：mcrypt</h3>
+							<p>tar zxvf mcrypt-2.6.8.tar.gz</p>
+							<p>cd mcrypt-2.6.8/</p>
+							<p>/sbin/ldconfig</p>
+							<p>./configure</p>
+							<p>make &amp;&amp; make install</p>
+							<h3>(9) 安装php-5.4.21：</h3>
+							<p>tar -zxvf php-5.4.21.tar.gz</p>
+							<p>cd php-5.4.21</p>
+							<p>./configure --prefix=/usr/local/php --with-config-file-path=/usr/local/php/etc --with-mysql=/usr/local/mysql </p>
+							<p>--with-mysqli=/usr/local/mysql/bin/mysql_config --with-iconv-dir=/usr/local --with-freetype-dir --with-jpeg-dir </p>
+							<p>--with-png-dir --with-zlib --with-gd --enable-gd-native-ttf --with-libxml-dir=/usr --enable-xml --disable-rpath </p>
+							<p>--enable-discard-path --enable-safe-mode --enable-bcmath --enable-shmop --enable-sysvsem --enable-inline-</p>
+							<p>optimization --with-curl --with-curlwrappers --enable-mbregex --enable-fastcgi --enable-fpm --enable-force-cgi-</p>
+							<p>redirect --enable-mbstring --with-mcrypt --with-openssl --with-mhash --enable-pcntl --enable-sockets --with-ldap </p>
+							<p>--with-ldap-sasl --with-xmlrpc --enable-zip --enable-soap --without-pear</p>
+							<hr>
+							<p>编译报错：
+							configure: error: Don't know how to define struct flock on this system, set --enable-opcache=no</p>
+							<p>解决： 安装 yum groupinstall "Development Tools" </p>
+							<p>重新编译</p>
+							<p>configure: WARNING: unrecognized options: --enable-discard-path, --enable-safe-mode, --with-curlwrappers, --enable-fastcgi, --enable-force-cgi-redirect</p>
+							<p>如果加的参数有不支持的，提示比如：configure: WARNING: unrecognized options: --enable-discard-path, --enable-safe-mode, --enable-fastcgi, --enable-force-cgi-redirect</p>
+							<p>说明上述这些参数废弃了。</p>
+							<hr>
+							<p>ln -s /usr/local/mysql/lib/libmysqlclient.so.18 /usr/lib64/</p>
+							<p>make ZEND<em>EXTRA</em>LIBS='-liconv'</p>
+							<p>make install</p>
+							<p>cp -f php.ini-production /usr/local/php/etc/php.ini</p>
+							<p>ln -s /usr/local/php/etc/php.ini /usr/local/php/php.ini</p>
+							<p>cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf</p>
+							<h3>(10) 安装php扩展库：memcache</h3>
+							<p>tar zxvf memcache-2.2.5.tgz</p>
+							<p>cd memcache-2.2.5/</p>
+							<p>/usr/local/php/bin/phpize</p>
+							<p>./configure --with-php-config=/usr/local/php/bin/php-config</p>
+							<p>make &amp;&amp; make install</p>
+							<h3>(11) 安装php加速：eaccelerator</h3>
+							<p>tar -zxvf eaccelerator-eaccelerator-42067ac.tar.gz</p>
+							<p>cd eaccelerator-eaccelerator-42067ac</p>
+							<p>/usr/local/php/bin/phpize</p>
+							<p>./configure --enable-eaccelerator=shared --with-php-config=/usr/local/php/bin/php-config</p>
+							<p>make &amp;&amp; make install</p>
+							<p>注：这里安装使用的是php5.6，eaccelerator并不兼容，则略过不安装</p>
+							<h3>（12） 修改php.ini增加memcache,ea等软件信息</h3>
+							<p>添加memcache库的位置：</p>
+							<p>vim /usr/local/php/php.ini</p>
+							<p>extension_dir = "/usr/local/php/lib/php/extensions/no-debug-non-zts-20100525"</p>
+							<p>extension = "memcache.so"</p>
+							<p>extension = "pdo_mysql.so"</p>
+							<p>extension = "imagick.so"</p>
+							<h3>（13）安装php扩展库:PDO_MYSQL</h3>
+							<p>tar zxvf PDO_MYSQL-1.0.2.tgz</p>
+							<p>cd PDO_MYSQL-1.0.2/</p>
+							<p>/usr/local/php/bin/phpize</p>
+							<p>./configure --with-php-config=/usr/local/php/bin/php-config --with-pdo-mysql=/usr/local/mysql</p>
+							<p>ln -s /usr/local/mysql/include/* /usr/local/include/</p>
+							<p>make &amp;&amp; make install</p>
+							<h3>（14）安装ImageMagick服务</h3>
+							<p>tar zxvf ImageMagick.tar.gz</p>
+							<p>cd ImageMagick-6.5.1-2/</p>
+							<p>./configure &amp;&amp; make &amp;&amp; make install</p>
+							<h3>（15）安装php扩展库：imagick</h3>
+							<p>tar zxvf imagick-3.1.2.tgz</p>
+							<p>cd imagick-3.1.2/</p>
+							<p>/usr/local/php/bin/phpize</p>
+							<p>ln -s /usr/local/include/ImageMagick-6 /usr/local/include/ImageMagick</p>
+							<p>./configure --with-php-config=/usr/local/php/bin/php-config</p>
+							<p>make &amp;&amp; make install</p>
+							<h3>（16）添加WWW用户，为系统运行nginx专用用户：</h3>
+							<p>/usr/sbin/groupadd www</p>
+							<p>/usr/sbin/useradd -g www www</p>
+							<p>mkdir -p /var/log/nginx</p>
+							<p>chmod +w /var/log/nginx</p>
+							<p>chown -R www:www /var/log/nginx</p>
+							<p>mkdir -p /data0/www</p>
+							<p>chmod +w /data0/www</p>
+							<p>chown -R www:www /data0/www</p>
+							<h3>（17）修改php-fpm.conf的配置：</h3>
+							<p>vim /usr/local/php/etc/php-fpm.conf</p>
+							<h3>去掉/更改 配置文件中的;</h3>
+							<p>pm.max_children = 64</p>
+							<p>pm.start_servers = 20</p>
+							<p>pm.min<em>spare</em>servers = 5</p>
+							<p>pm.max<em>spare</em>servers = 35</p>
+							<p>pm.max_requests = 1024</p>
+							<p>user = www</p>
+							<p>group = www</p>
+							<h3>检查语法是否正确</h3>
+							<p>/usr/local/php/sbin/php-fpm -t</p>
+							<p>NOTICE: configuration file /usr/local/php/etc/php-fpm.conf test is successful</p>
+							<p>看到上面的信息 证明php配置文件正常，可以启动了。</p>
+							<h3>（18） 添加环境变量：</h3>
+							<p>echo "export PATH=\$PATH:/usr/local/php/sbin/" &gt;&gt;/etc/profile</p>
+							<p>echo "export PATH=\$PATH:/usr/local/php/bin/" &gt;&gt;/etc/profile</p>
+							<p>. /etc/profile</p>
+							<pre><code>注意：这里最后一步报错-bash: ./etc/profile: Permission denied
+
+							原因是指令 . /etc/profile 点和斜杠之间应该是有空格的，这里漏掉了
+							</code></pre>
+
+							<h3>（19）安装nginx的 pcre</h3>
+							<p>卸载PCRE</p>
+							<p>rpm -qa pcre</p>
+							<p>rpm -e --nodeps pcre</p>
+							<p>tar -zxvf pcre2-10.20.tar.gz</p>
+							<p>cd pcre2-10.20 &amp;&amp; ./configure --prefix=/usr/local/pcre &amp;&amp; make &amp;&amp; make install</p>
+							<pre><code>注意：此处configure出错
+							grep: error while loading shared libraries: libpcre.so.0: cannot open shared object file: No such file or directory
+							原因是libpcre.so.0文件没有了
+
+							解决方法：
+
+							改用yum源安装 yum install pcre
+							</code></pre>
+
+							<h3>（20）编译安装 nginx</h3>
+							<p>tar -zxvf nginx-1.10.1.tar.gz</p>
+							<p>cd nginx-1.10.1/</p>
+							<p>./configure --user=www --group=www --prefix=/usr/local/nginx --sbin-path=/usr/local/nginx/sbin/nginx --conf-</p>
+							<p>path=/usr/local/nginx/conf/nginx.conf --with-http<em>stub</em>status_module --with-http<em>ssl</em>module --with-</p>
+							<p>pcre=/usr/local/pcre --lock-path=/var/run/nginx.lock --pid-path=/var/run/nginx.pid</p>
+							<p>make &amp;&amp; make install</p>
+							<pre><code>注意：make 报错
+							make -f objs/Makefile
+							make[1]: Entering directory `/home/ferry/www/service-file/nginx-1.10.1'
+							cd /usr/local/pcre \
+								&amp;&amp; if [ -f Makefile ]; then make distclean; fi \
+								&amp;&amp; CC="cc" CFLAGS="-O2 -fomit-frame-pointer -pipe " \
+								./configure --disable-shared 
+							/bin/sh: line 2: ./configure: No such file or directory
+							make[1]: *** [/usr/local/pcre/Makefile] Error 127
+							make[1]: Leaving directory `/home/ferry/www/service-file/nginx-1.10.1'
+							make: *** [build] Error 2
+
+							解决：--with-pcre=DIR 是指 pcre 的源码目录，而不是 pcre 的安装目录
+							所以修改--with-pcre=/usr/local/pcre 为 --with-pcre=/home/ferry/www/service-file/pcre2-10.20
+
+							再报错
+							cc: /home/ferry/www/service-file/pcre2-10.20/.libs/libpcre.a: No such file or directory
+							make[1]: *** [objs/nginx] Error 1
+							make[1]: Leaving directory `/home/ferry/www/service-file/nginx-1.10.1'
+							make: *** [build] Error 2
+
+							解决方案：
+
+							mkdir -p /home/ferry/www/service-file/pcre2-10.20/.libs
+							cp /usr/lib/libpcre.a /home/ferry/www/service-file/pcre2-10.20/libpcre.a
+							cp /usr/lib/libpcre.a /home/ferry/www/service-file/pcre2-10.20/libpcre.la
+							cp /usr/lib/libpcre.a /home/ferry/www/service-file/pcre2-10.20/.libs/libpcre.a
+							cp /usr/lib/libpcre.a /home/ferry/www/service-file/pcre2-10.20/.libs/libpcre.la
+							</code></pre>
+
+							<p>编译成功</p>
+							<h3>（21）修改nginx配置文件</h3>
+							<p>user www;</p>
+							<p>events {</p>
+							<p>use epoll;</p>
+							<p>worker_connections  1024;</p>
+							<p>}</p>
+							<pre><code>#注意 把/scripti改为$document_root$  不然就是 file not found                                                     
+							</code></pre>
+
+							<p>location ~ .php$ {</p>
+							<p>root           html;</p>
+							<p>fastcgi_pass   127.0.0.1:9000;</p>
+							<p>fastcgi_index  index.php;</p>
+							<p>fastcgi<em>param  SCRIPT</em>FILENAME  $document_root$fastcgi<em>script</em>name;</p>
+							<p>include        fastcgi_params;</p>
+							<p>}</p>
+							<h3>（22）写一个php的测试文件：phpinfo</h3>
+							<p>cat &gt;&gt;/usr/local/nginx/html/index.php&lt;&lt;EOF</p>
+							<p>&lt;?php             
+							</p>
+							<p>phpinfo();          
+							</p>
+							<p>?&gt;            
+							</p>
+							<p>EOF</p>
+							<h3>（23）添加开机启动:</h3>
+							<p>echo "/usr/local/php/sbin/php-fpm" &gt;&gt; /etc/rc.local</p>
+							<p>echo "/usr/local/nginx/sbin/nginx" &gt;&gt; /etc/rc.local</p>
+							<p>echo "/etc/init.d/mysqld restart" &gt;&gt; /etc/rc.local</p>
+							<h3>（24）启动nginx 启动php-fpm 开放防火墙iptables 80端口</h3>
+							<h3>（25）浏览器访问：</h3>
+							<p>http://ip/index.php</p>
+							<h2>拓展</h2>
+							<h3>1.关于/etc/init.d</h3>
+							<p>/etc/init.d目录包含许多系统各种服务的启动和停止脚本</p>
+							<h3>2.关于/etc/rc.local</h3>
+							<p>该脚本是在系统初始化级别脚本运行之后再执行的，因此可以安全地在里面添加你想在系统启动之后执行的脚本。</p>
+							<h3>参考链接 1、 <a href="http://blog.csdn.net/u010098331/article/details/50749587" target="_blank">centos 6.5 搭建lnmp环境</a></h3>
+							<p>2 下载所有使用到的软件：（13个）</p>
+							<p>wget http://ftp.gnu.org/gnu/libiclsonv/libiconv-1.13.tar.gz</p>
+							<p>手动下载 https://sourceforge.net/projects/mcrypt/files/Libmcrypt/2.5.8/ </p>
+							<p>wget http://jaist.dl.sourceforge.NET/project/mcrypt/MCrypt/2.6.8/mcrypt-2.6.8.tar.gz</p>
+							<p>wget http://jaist.dl.sourceforge.Net/project/mhash/mhash/0.9.9.9/mhash-0.9.9.9.tar.gz</p>
+							<p>wget http://vps.googlecode.com/files/memcache-2.2.5.tgz</p>
+							<p>wget http://vps.googlecode.com/files/PDO_MYSQL-1.0.2.tgz</p>
+							<p>wget http://pecl.php.net/get/imagick-3.1.2.tgz</p>
+							<p>wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.21.tar.gz</p>
+							<p>wget http://netcologne.dl.sourceforge.net/project/mysql.mirror/MySQL%205.5.30/mysql-5.5.30.tar.gz（链接已失效，改为使用Sohu的镜像源）</p>
+							<p>wget http://mirror.aarnet.edu.au/pub/imagemagick/ImageMagick-6.9.8-0.tar.gz</p>
+							<p>wget http://pecl.php.net/get/imagick-3.1.2.tgz</p>
+							<p>wget http://us3.php.net/get/php-5.4.21.tar.gz/from/cn2.php.net/mirror</p>
+							<p>wget http://soft.vpser.net/web/eaccelerator/eaccelerator-eaccelerator-42067ac.tar.gz</p>
+							<p>wget http://nginx.org/download/nginx-1.4.0.tar.gz</p>
+
+                        </div>
+                    </article>
+
+                </div>
+                <aside class="col-md-4 blog-aside">
+                    
+                    <div class="aside-widget">
+                        <header>
+                            <h3>Featured Post</h3>
+                        </header>
+                        <div class="body">
+                            <ul class="clean-list">
+                                <li><a href="">Clean - Responsive HTML5 Template</a></li>
+                                <li><a href="">Responsive Pricing Table</a></li>
+                                <li><a href="">Yellow HTML5 Template</a></li>
+                                <li><a href="">Blackor Responsive Theme</a></li>
+                                <li><a href="">Portfolio Bootstrap Template</a></li>
+                                <li><a href="">Clean Slider Template</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                
+                    <div class="aside-widget">
+                        <header>
+                            <h3>Related Post</h3>
+                        </header>
+                        <div class="body">
+                            <ul class="clean-list">
+                                <li><a href="">Blackor Responsive Theme</a></li>
+                                <li><a href="">Portfolio Bootstrap Template</a></li>
+                                <li><a href="">Clean Slider Template</a></li>
+                                <li><a href="">Clean - Responsive HTML5 Template</a></li>
+                                <li><a href="">Responsive Pricing Table</a></li>
+                                <li><a href="">Yellow HTML5 Template</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="aside-widget">
+                        <header>
+                            <h3>Tags</h3>
+                        </header>
+                        <div class="body clearfix">
+                            <ul class="tags">
+                                <li><a href="#">HTML5</a></li>
+                                <li><a href="#">CSS3</a></li>
+                                <li><a href="#">COMPONENTS</a></li>
+                                <li><a href="#">TEMPLATE</a></li>
+                                <li><a href="#">PLUGIN</a></li>
+                                <li><a href="#">BOOTSTRAP</a></li>
+                                <li><a href="#">TUTORIAL</a></li>
+                                <li><a href="#">UI/UX</a></li>                            
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="widewrapper footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 footer-widget">
+                        <h3> <i class="fa fa-user"></i>About</h3>
+
+                       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab animi laboriosam nostrum consequatur fugiat at, labore praesentium modi, quasi dolorum debitis reiciendis facilis, dolor saepe sint nemo, earum molestias quas.</p>
+                       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, error aspernatur assumenda quae eveniet.</p>
+                    </div>
+
+                    <div class="col-md-4 footer-widget">
+                        <h3> <i class="fa fa-pencil"></i> Recent Post</h3>
+                        <ul class="clean-list">
+                            <li><a href="">Clean - Responsive HTML5 Template</a></li>
+                            <li><a href="">Responsive Pricing Table</a></li>
+                            <li><a href="">Yellow HTML5 Template</a></li>
+                            <li><a href="">Blackor Responsive Theme</a></li>
+                            <li><a href="">Portfolio Bootstrap Template</a></li>
+                            <li><a href="">Clean Slider Template</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-4 footer-widget">
+                        <h3> <i class="fa fa-envelope"></i>Contact Me</h3>
+
+                        <p>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil fugiat, cupiditate veritatis excepturi tempore explicabo.</p>
+                         <div class="footer-widget-icon">
+                            <i class="fa fa-facebook"></i><i class="fa fa-twitter"></i><i class="fa fa-google"></i>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+        <div class="widewrapper copyright">
+                Copyright 2015
+        </div>
+    </footer>
+
+    <!--
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/modernizr.js"></script>
+	-->
+</body>
+</html>

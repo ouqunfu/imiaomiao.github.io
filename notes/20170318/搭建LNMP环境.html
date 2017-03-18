@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>搭建LNMP环境 - 副本</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<p>LNMP代表的就是：Linux系统下Nginx+MySQL+PHP这种网站服务器架构。
+Linux是一类Unix计算机操作系统的统称，是目前最流行的免费操作系统。代表版本有：debian、centos、ubuntu、fedora、gentoo等。
+Nginx是一个高性能的HTTP和反向代理服务器，也是一个IMAP/POP3/SMTP代理服务器。
+Mysql是一个小型关系型数据库管理系统。
+PHP是一种在服务器端执行的嵌入HTML文档的脚本语言。
+这四种软件均为免费开源软件，组合到一起，成为一个免费、高效、扩展性强的网站服务系统。</p>
+<h2>1、centos 6.5 X86_64 VMware下编译安装搭建lnmp，架构web环境</h2>
+<p>&emsp;建议安装顺序：</p>
+<p>&emsp;MySQL-------》》编译PHP----》》编译nginx</p>
+<h3>（1）检查编译安装环境</h3>
+<h4>&emsp;#查看httpd、mysql、php是否安装</h4>
+<h4>&emsp;[root@localhost ~]#rpm -q httpd mysql php</h4>
+<h4>&emsp;#如果已安装则卸载:</h4>
+<h4>&emsp;[root@localhost ~]#rpm -e httpd --nodeps</h4>
+<h4>&emsp;[root@localhost ~]#rpm -e mysql --nodeps</h4>
+<h4>&emsp;[root@localhost ~]#rpm -e php --nodeps</h4>
+<h4>&emsp;#删除相关文件</h4>
+<h4>&emsp;find / -name php mysql nginx</h4>
+<h4>&emsp;rm -rf ***</h4>
+<h3>（2）安装解决依赖关系</h3>
+<pre><code>yum install -y wget gcc gcc-c++ autoconf libjpeg libjpeg-devel perl perl* perl-CPAN libpng libpng-devel freetype freetype-devel libxml2 libxml2-devel zlib zlib-devel glibc glibc-devel glib2 glib2-devel bzip2 bzip2-devel ncurses ncurses-devel curl curl-devel e2fsprogs e2fsprogs-devel krb5 krb5-devel libidn libidn-devel openssl openssl-devel openldap openldap-devel nss_ldap openldap-clients openldap-servers png jpeg autoconf gcc cmake make gcc-c++ gcc ladp ldap* ncurses ncurses-devel zlib zlib-devel zlib-static pcre pcre-devel pcre-static openssl openssl-devel perl libtoolt openldap-devel libxml2-devel ntpdate cmake gd* gd2 ImageMagick-devel jpeg jpeg* pcre-dev* fontconfig libpng libxml2 zip unzip gzip
+</code></pre>
+
+<p>yum install -y wget gcc gcc-c++ autoconf libjpeg libjpeg-devel perl perl* perl-CPAN libpng libpng-devel freetype </p>
+<p>freetype-devel libxml2 libxml2-devel zlib zlib-devel glibc glibc-devel glib2 glib2-devel bzip2 bzip2-devel </p>
+<p>ncurses ncurses-devel curl curl-devel e2fsprogs e2fsprogs-devel krb5 krb5-devel libidn libidn-devel openssl </p>
+<p>openssl-devel openldap openldap-devel nss_ldap openldap-clients openldap-servers png jpeg autoconf gcc cmake </p>
+<p>make gcc-c++ gcc ladp ldap* ncurses ncurses-devel zlib zlib-devel zlib-static pcre pcre-devel pcre-static </p>
+<p>openssl openssl-devel perl libtoolt openldap-devel libxml2-devel ntpdate cmake gd* gd2 ImageMagick-devel jpeg </p>
+<p>jpeg* pcre-dev* fontconfig libpng libxml2 zip unzip gzip</p>
+<h3>（3）安装mysql-5.5.53</h3>
+<p>下载mysql-5.5.53.tar.gz</p>
+<p>groupadd mysql</p>
+<p>useradd mysql -g mysql</p>
+<p>tar -zxvf mysql-5.5.30.tar.gz</p>
+<p>cd mysql-5.5.30</p>
+<p>cmake -DCMAKE<em>INSTALL</em>PREFIX=/usr/local/mysql \</p>
+<p>-DMYSQL<em>UNIX</em>ADDR=/tmp/mysql.sock \</p>
+<p>-DEXTRA_CHARSETS=all \</p>
+<p>-DDEFAULT_CHARSET=utf8 \</p>
+<p>-DDEFAULT<em>COLLATION=utf8</em>general_ci \</p>
+<p>-DWITH<em>EXTRA</em>CHARSETS:STRING=utf8,gbk \</p>
+<p>-DWITH<em>INNOBASE</em>STORAGE_ENGINE=1 \</p>
+<p>-DWITH_READLINE=1 \</p>
+<p>-DENABLED<em>LOCAL</em>INFILE=1 \</p>
+<p>-DMYSQL_DATADIR=/data/mysql/ \</p>
+<p>-DMYSQL_USER=mysql \</p>
+<p>-DMYSQL<em>TCP</em>PORT=3306	</p>
+<pre><code>cmake -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DMYSQL_UNIX_ADDR=/tmp/mysql.sock -DEXTRA_CHARSETS=all -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci -DWITH_EXTRA_CHARSETS:STRING=utf8,gbk -DWITH_INNOBASE_STORAGE_ENGINE=1 -DWITH_READLINE=1 -DENABLED_LOCAL_INFILE=1 -DMYSQL_DATADIR=/data/mysql/ -DMYSQL_USER=mysql -DMYSQL_TCP_PORT=3306
+</code></pre>
+
+<p>make &amp;&amp; make install</p>
+<p>mkdir -p /data/mysql</p>
+<p>chown mysql.mysql -R /data/mysql</p>
+<p>mv /etc/my.cnf /etc/my.cnf-old</p>
+<p>cp support-files/my-medium.cnf /etc/my.cnf</p>
+<p>chmod 755 scripts/mysql<em>install</em>db</p>
+<p>scripts/mysql<em>install</em>db  --user=mysql  --basedir=/usr/local/mysql --datadir=/data/mysql/</p>
+<p>cp support-files/mysql.server /etc/init.d/mysqld</p>
+<p>chmod 755 /etc/init.d/mysqld</p>
+<p>chkconfig mysqld on</p>
+<p>service mysqld start</p>
+<p>设置mysql的root密码为123456</p>
+<p>/usr/local/mysql/bin/mysqladmin -u root password '123456'</p>
+<h3>（4）安装php的扩展库：libiconv</h3>
+<p>tar zxvf libiconv-1.13.tar.gz</p>
+<p>cd libiconv-1.13/</p>
+<p>./configure --prefix=/usr/local</p>
+<p>make &amp;&amp; make install</p>
+<h3>（5）安装php扩展库：libmcrypt</h3>
+<p>tar zxvf libmcrypt-2.5.8.tar.gz</p>
+<p>cd libmcrypt-2.5.8/</p>
+<p>./configure</p>
+<p>make &amp;&amp; make install</p>
+<p>/sbin/ldconfig</p>
+<h4>注：这里不要退出去了。</h4>
+<p>cd libltdl/</p>
+<p>./configure --enable-ltdl-install</p>
+<p>make &amp;&amp; make install</p>
+<h3>（6） 安装php扩展库：mhash</h3>
+<p>tar zxvf mhash-0.9.9.9.tar.gz</p>
+<p>cd mhash-0.9.9.9/</p>
+<p>./configure</p>
+<p>make &amp;&amp; make install</p>
+<h3>（7） 做库的软连接：</h3>
+<p>ln -s /usr/local/lib/libmcrypt.la /usr/lib/libmcrypt.la</p>
+<p>ln -s /usr/local/lib/libmcrypt.so /usr/lib/libmcrypt.so</p>
+<p>ln -s /usr/local/lib/libmcrypt.so.4 /usr/lib/libmcrypt.so.4</p>
+<p>ln -s /usr/local/lib/libmcrypt.so.4.4.8 /usr/lib/libmcrypt.so.4.4.8</p>
+<p>ln -s /usr/local/lib/libmhash.a /usr/lib/libmhash.a</p>
+<p>ln -s /usr/local/lib/libmhash.la /usr/lib/libmhash.la</p>
+<p>ln -s /usr/local/lib/libmhash.so /usr/lib/libmhash.so</p>
+<p>ln -s /usr/local/lib/libmhash.so.2 /usr/lib/libmhash.so.2</p>
+<p>ln -s /usr/local/lib/libmhash.so.2.0.1 /usr/lib/libmhash.so.2.0.1</p>
+<p>ln -s /usr/lib64/libldap* /usr/lib/</p>
+<h3>(8) 安装php扩展包：mcrypt</h3>
+<p>tar zxvf mcrypt-2.6.8.tar.gz</p>
+<p>cd mcrypt-2.6.8/</p>
+<p>/sbin/ldconfig</p>
+<p>./configure</p>
+<p>make &amp;&amp; make install</p>
+<h3>(9) 安装php-5.4.21：</h3>
+<p>tar -zxvf php-5.4.21.tar.gz</p>
+<p>cd php-5.4.21</p>
+<p>./configure --prefix=/usr/local/php --with-config-file-path=/usr/local/php/etc --with-mysql=/usr/local/mysql </p>
+<p>--with-mysqli=/usr/local/mysql/bin/mysql_config --with-iconv-dir=/usr/local --with-freetype-dir --with-jpeg-dir </p>
+<p>--with-png-dir --with-zlib --with-gd --enable-gd-native-ttf --with-libxml-dir=/usr --enable-xml --disable-rpath </p>
+<p>--enable-discard-path --enable-safe-mode --enable-bcmath --enable-shmop --enable-sysvsem --enable-inline-</p>
+<p>optimization --with-curl --with-curlwrappers --enable-mbregex --enable-fastcgi --enable-fpm --enable-force-cgi-</p>
+<p>redirect --enable-mbstring --with-mcrypt --with-openssl --with-mhash --enable-pcntl --enable-sockets --with-ldap </p>
+<p>--with-ldap-sasl --with-xmlrpc --enable-zip --enable-soap --without-pear</p>
+<hr />
+<p>编译报错：
+configure: error: Don't know how to define struct flock on this system, set --enable-opcache=no</p>
+<p>解决： 安装 yum groupinstall &quot;Development Tools&quot; </p>
+<p>重新编译</p>
+<p>configure: WARNING: unrecognized options: --enable-discard-path, --enable-safe-mode, --with-curlwrappers, --enable-fastcgi, --enable-force-cgi-redirect</p>
+<p>如果加的参数有不支持的，提示比如：configure: WARNING: unrecognized options: --enable-discard-path, --enable-safe-mode, --enable-fastcgi, --enable-force-cgi-redirect</p>
+<p>说明上述这些参数废弃了。</p>
+<hr />
+<p>ln -s /usr/local/mysql/lib/libmysqlclient.so.18 /usr/lib64/</p>
+<p>make ZEND<em>EXTRA</em>LIBS='-liconv'</p>
+<p>make install</p>
+<p>cp -f php.ini-production /usr/local/php/etc/php.ini</p>
+<p>ln -s /usr/local/php/etc/php.ini /usr/local/php/php.ini</p>
+<p>cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf</p>
+<h3>(10) 安装php扩展库：memcache</h3>
+<p>tar zxvf memcache-2.2.5.tgz</p>
+<p>cd memcache-2.2.5/</p>
+<p>/usr/local/php/bin/phpize</p>
+<p>./configure --with-php-config=/usr/local/php/bin/php-config</p>
+<p>make &amp;&amp; make install</p>
+<h3>(11) 安装php加速：eaccelerator</h3>
+<p>tar -zxvf eaccelerator-eaccelerator-42067ac.tar.gz</p>
+<p>cd eaccelerator-eaccelerator-42067ac</p>
+<p>/usr/local/php/bin/phpize</p>
+<p>./configure --enable-eaccelerator=shared --with-php-config=/usr/local/php/bin/php-config</p>
+<p>make &amp;&amp; make install</p>
+<p>注：这里安装使用的是php5.6，eaccelerator并不兼容，则略过不安装</p>
+<h3>（12） 修改php.ini增加memcache,ea等软件信息</h3>
+<p>添加memcache库的位置：</p>
+<p>vim /usr/local/php/php.ini</p>
+<p>extension_dir = &quot;/usr/local/php/lib/php/extensions/no-debug-non-zts-20100525&quot;</p>
+<p>extension = &quot;memcache.so&quot;</p>
+<p>extension = &quot;pdo_mysql.so&quot;</p>
+<p>extension = &quot;imagick.so&quot;</p>
+<h3>（13）安装php扩展库:PDO_MYSQL</h3>
+<p>tar zxvf PDO_MYSQL-1.0.2.tgz</p>
+<p>cd PDO_MYSQL-1.0.2/</p>
+<p>/usr/local/php/bin/phpize</p>
+<p>./configure --with-php-config=/usr/local/php/bin/php-config --with-pdo-mysql=/usr/local/mysql</p>
+<p>ln -s /usr/local/mysql/include/* /usr/local/include/</p>
+<p>make &amp;&amp; make install</p>
+<h3>（14）安装ImageMagick服务</h3>
+<p>tar zxvf ImageMagick.tar.gz</p>
+<p>cd ImageMagick-6.5.1-2/</p>
+<p>./configure &amp;&amp; make &amp;&amp; make install</p>
+<h3>（15）安装php扩展库：imagick</h3>
+<p>tar zxvf imagick-3.1.2.tgz</p>
+<p>cd imagick-3.1.2/</p>
+<p>/usr/local/php/bin/phpize</p>
+<p>ln -s /usr/local/include/ImageMagick-6 /usr/local/include/ImageMagick</p>
+<p>./configure --with-php-config=/usr/local/php/bin/php-config</p>
+<p>make &amp;&amp; make install</p>
+<h3>（16）添加WWW用户，为系统运行nginx专用用户：</h3>
+<p>/usr/sbin/groupadd www</p>
+<p>/usr/sbin/useradd -g www www</p>
+<p>mkdir -p /var/log/nginx</p>
+<p>chmod +w /var/log/nginx</p>
+<p>chown -R www:www /var/log/nginx</p>
+<p>mkdir -p /data0/www</p>
+<p>chmod +w /data0/www</p>
+<p>chown -R www:www /data0/www</p>
+<h3>（17）修改php-fpm.conf的配置：</h3>
+<p>vim /usr/local/php/etc/php-fpm.conf</p>
+<h4>去掉/更改 配置文件中的;</h4>
+<p>pm.max_children = 64</p>
+<p>pm.start_servers = 20</p>
+<p>pm.min<em>spare</em>servers = 5</p>
+<p>pm.max<em>spare</em>servers = 35</p>
+<p>pm.max_requests = 1024</p>
+<p>user = www</p>
+<p>group = www</p>
+<h4>检查语法是否正确</h4>
+<p>/usr/local/php/sbin/php-fpm -t</p>
+<p>NOTICE: configuration file /usr/local/php/etc/php-fpm.conf test is successful</p>
+<p>看到上面的信息 证明php配置文件正常，可以启动了。</p>
+<h3>（18） 添加环境变量：</h3>
+<p>echo &quot;export PATH=\$PATH:/usr/local/php/sbin/&quot; &gt;&gt;/etc/profile</p>
+<p>echo &quot;export PATH=\$PATH:/usr/local/php/bin/&quot; &gt;&gt;/etc/profile</p>
+<p>. /etc/profile</p>
+<pre><code>注意：这里最后一步报错-bash: ./etc/profile: Permission denied
+
+原因是指令 . /etc/profile 点和斜杠之间应该是有空格的，这里漏掉了
+</code></pre>
+
+<h3>（19）安装nginx的 pcre</h3>
+<p>卸载PCRE</p>
+<p>rpm -qa pcre</p>
+<p>rpm -e --nodeps pcre</p>
+<p>tar -zxvf pcre2-10.20.tar.gz</p>
+<p>cd pcre2-10.20 &amp;&amp; ./configure --prefix=/usr/local/pcre &amp;&amp; make &amp;&amp; make install</p>
+<pre><code>注意：此处configure出错
+grep: error while loading shared libraries: libpcre.so.0: cannot open shared object file: No such file or directory
+原因是libpcre.so.0文件没有了
+
+解决方法：
+
+改用yum源安装 yum install pcre
+</code></pre>
+
+<h3>（20）编译安装 nginx</h3>
+<p>tar -zxvf nginx-1.10.1.tar.gz</p>
+<p>cd nginx-1.10.1/</p>
+<p>./configure --user=www --group=www --prefix=/usr/local/nginx --sbin-path=/usr/local/nginx/sbin/nginx --conf-</p>
+<p>path=/usr/local/nginx/conf/nginx.conf --with-http<em>stub</em>status_module --with-http<em>ssl</em>module --with-</p>
+<p>pcre=/usr/local/pcre --lock-path=/var/run/nginx.lock --pid-path=/var/run/nginx.pid</p>
+<p>make &amp;&amp; make install</p>
+<pre><code>注意：make 报错
+make -f objs/Makefile
+make[1]: Entering directory `/home/ferry/www/service-file/nginx-1.10.1'
+cd /usr/local/pcre \
+    &amp;&amp; if [ -f Makefile ]; then make distclean; fi \
+    &amp;&amp; CC=&quot;cc&quot; CFLAGS=&quot;-O2 -fomit-frame-pointer -pipe &quot; \
+    ./configure --disable-shared 
+/bin/sh: line 2: ./configure: No such file or directory
+make[1]: *** [/usr/local/pcre/Makefile] Error 127
+make[1]: Leaving directory `/home/ferry/www/service-file/nginx-1.10.1'
+make: *** [build] Error 2
+
+解决：--with-pcre=DIR 是指 pcre 的源码目录，而不是 pcre 的安装目录
+所以修改--with-pcre=/usr/local/pcre 为 --with-pcre=/home/ferry/www/service-file/pcre2-10.20
+
+再报错
+cc: /home/ferry/www/service-file/pcre2-10.20/.libs/libpcre.a: No such file or directory
+make[1]: *** [objs/nginx] Error 1
+make[1]: Leaving directory `/home/ferry/www/service-file/nginx-1.10.1'
+make: *** [build] Error 2
+
+解决方案：
+
+mkdir -p /home/ferry/www/service-file/pcre2-10.20/.libs
+cp /usr/lib/libpcre.a /home/ferry/www/service-file/pcre2-10.20/libpcre.a
+cp /usr/lib/libpcre.a /home/ferry/www/service-file/pcre2-10.20/libpcre.la
+cp /usr/lib/libpcre.a /home/ferry/www/service-file/pcre2-10.20/.libs/libpcre.a
+cp /usr/lib/libpcre.a /home/ferry/www/service-file/pcre2-10.20/.libs/libpcre.la
+</code></pre>
+
+<p>编译成功</p>
+<h3>（21）修改nginx配置文件</h3>
+<p>user www;</p>
+<p>events {</p>
+<p>use epoll;</p>
+<p>worker_connections  1024;</p>
+<p>}</p>
+<pre><code>#注意 把/scripti改为$document_root$  不然就是 file not found                                                     
+</code></pre>
+
+<p>location ~ .php$ {</p>
+<p>root           html;</p>
+<p>fastcgi_pass   127.0.0.1:9000;</p>
+<p>fastcgi_index  index.php;</p>
+<p>fastcgi<em>param  SCRIPT</em>FILENAME  $document_root$fastcgi<em>script</em>name;</p>
+<p>include        fastcgi_params;</p>
+<p>}</p>
+<h3>（22）写一个php的测试文件：phpinfo</h3>
+<p>cat &gt;&gt;/usr/local/nginx/html/index.php&lt;&lt;EOF</p>
+<p>&lt;?php             </p>
+<p>phpinfo();          </p>
+<p>?&gt;            </p>
+<p>EOF</p>
+<h3>（23）添加开机启动:</h3>
+<p>echo &quot;/usr/local/php/sbin/php-fpm&quot; &gt;&gt; /etc/rc.local</p>
+<p>echo &quot;/usr/local/nginx/sbin/nginx&quot; &gt;&gt; /etc/rc.local</p>
+<p>echo &quot;/etc/init.d/mysqld restart&quot; &gt;&gt; /etc/rc.local</p>
+<h3>（24）启动nginx 启动php-fpm 开放防火墙iptables 80端口</h3>
+<h3>（25）浏览器访问：</h3>
+<p>http://ip/index.php</p>
+<h2>拓展</h2>
+<h3>1.关于/etc/init.d</h3>
+<p>/etc/init.d目录包含许多系统各种服务的启动和停止脚本</p>
+<h3>2.关于/etc/rc.local</h3>
+<p>该脚本是在系统初始化级别脚本运行之后再执行的，因此可以安全地在里面添加你想在系统启动之后执行的脚本。</p>
+<h3>参考链接 1、 <a href="http://blog.csdn.net/u010098331/article/details/50749587">centos 6.5 搭建lnmp环境</a></h3>
+<p>2 下载所有使用到的软件：（13个）</p>
+<p>wget http://ftp.gnu.org/gnu/libiclsonv/libiconv-1.13.tar.gz</p>
+<p>手动下载 https://sourceforge.net/projects/mcrypt/files/Libmcrypt/2.5.8/ </p>
+<p>wget http://jaist.dl.sourceforge.NET/project/mcrypt/MCrypt/2.6.8/mcrypt-2.6.8.tar.gz</p>
+<p>wget http://jaist.dl.sourceforge.Net/project/mhash/mhash/0.9.9.9/mhash-0.9.9.9.tar.gz</p>
+<p>wget http://vps.googlecode.com/files/memcache-2.2.5.tgz</p>
+<p>wget http://vps.googlecode.com/files/PDO_MYSQL-1.0.2.tgz</p>
+<p>wget http://pecl.php.net/get/imagick-3.1.2.tgz</p>
+<p>wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.21.tar.gz</p>
+<p>wget http://netcologne.dl.sourceforge.net/project/mysql.mirror/MySQL%205.5.30/mysql-5.5.30.tar.gz（链接已失效，改为使用Sohu的镜像源）</p>
+<p>wget http://mirror.aarnet.edu.au/pub/imagemagick/ImageMagick-6.9.8-0.tar.gz</p>
+<p>wget http://pecl.php.net/get/imagick-3.1.2.tgz</p>
+<p>wget http://us3.php.net/get/php-5.4.21.tar.gz/from/cn2.php.net/mirror</p>
+<p>wget http://soft.vpser.net/web/eaccelerator/eaccelerator-eaccelerator-42067ac.tar.gz</p>
+<p>wget http://nginx.org/download/nginx-1.4.0.tar.gz</p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

@@ -1,3 +1,9 @@
+LNMP代表的就是：Linux系统下Nginx+MySQL+PHP这种网站服务器架构。
+Linux是一类Unix计算机操作系统的统称，是目前最流行的免费操作系统。代表版本有：debian、centos、ubuntu、fedora、gentoo等。
+Nginx是一个高性能的HTTP和反向代理服务器，也是一个IMAP/POP3/SMTP代理服务器。
+Mysql是一个小型关系型数据库管理系统。
+PHP是一种在服务器端执行的嵌入HTML文档的脚本语言。
+这四种软件均为免费开源软件，组合到一起，成为一个免费、高效、扩展性强的网站服务系统。
 
 ## 1、centos 6.5 X86_64 VMware下编译安装搭建lnmp，架构web环境
 
@@ -336,7 +342,7 @@ chown -R www:www /data0/www
 
 vim /usr/local/php/etc/php-fpm.conf
 
-#去掉/更改 配置文件中的;
+#### 去掉/更改 配置文件中的;
 
 pm.max_children = 64
 
@@ -353,7 +359,7 @@ user = www
 group = www
 
 
-#检查语法是否正确
+#### 检查语法是否正确
 
 /usr/local/php/sbin/php-fpm -t
 

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>centos 搭建Samba服务环境</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+
+    <!-- Font-Awesome -->
+    <link rel="stylesheet" href="../../css/font-awesome/css/font-awesome.min.css">
+
+    <!-- Google Webfonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600|PT+Serif:400,400italic' rel='stylesheet' type='text/css'>
+
+    <!-- Styles -->
+   <link rel="stylesheet" href="../../css/style.css" id="theme-styles">
+
+    <!--[if lt IE 9]>      
+        <script src="js/vendor/google/html5-3.6-respond-1.1.0.min.js"></script>
+    <![endif]-->
+
+    
+</head>
+<body>
+    <header>
+        <div class="widewrapper masthead">
+            <div class="container">
+                <a href="index.html" id="logo">
+                    <img src="../../img/logo.png" alt="clean Blog">
+                </a>
+
+                <div id="mobile-nav-toggle" class="pull-right">
+                    <a href="#" data-toggle="collapse" data-target=".clean-nav .navbar-collapse">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </div>
+
+                <!--
+				<nav class="pull-right clean-nav">
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav nav-pills navbar-nav">
+                          
+                             <li>
+                                <a href="index.html">Home</a>
+                            </li>
+                            <li>
+                                <a href="about.html">About</a>
+                            </li>
+                            <li>
+                                <a href="contact.html">Contact</a>
+                            </li>                       
+                        </ul>
+                    </div>
+                </nav>   
+-->				
+
+            </div>
+        </div>
+
+        <div class="widewrapper subheader">
+            <div class="container">
+                <div class="clean-breadcrumb">
+                    <a href="#">Blog</a>
+                    <span class="separator">&#x2F;</span>
+                    <a href="#">notes</a>
+                    <span class="separator">&#x2F;</span>
+                    <a href="#">centos 搭建Samba服务环境</a>
+                </div>
+
+              
+                <div class="clean-searchbox">
+                    <form action="#" method="get" accept-charset="utf-8">
+                       
+                        <input class="searchfield" id="searchbox" type="text" placeholder="Search">
+                         <button class="searchbutton" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="widewrapper main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 blog-main">
+                    <article class="blog-post">
+                        <header>
+                           
+                            <div class="lead-image">
+                                <img src="../../img/2.jpg" alt="" class="img-responsive">
+                                
+                            </div>
+                        </header>
+                        <div class="body">
+                            <h1>centos 搭建Samba服务环境</h1>
+                            <div class="meta">
+                                <i class="fa fa-user"></i> Olver <i class="fa fa-calendar"></i>18/03/2017
+								<!--<i class="fa fa-comments"></i><span class="data"><a href="#comments"></a></span>-->
+                            </div>
+                            <h4>Samba是在Linux和UNIX系统上实现SMB协议的一个免费软件，由服务器及客户端程序构成。</h4>
+							<h4>为了实现Windows主机与Linux服务器之间的资源共享，Linux操作系统提供了Samba服务，Samba服务为两种不同的操作系统架起了一座桥梁，使Linux系统和Windows系统之间能够实现互相通信，为广泛的Linux爱好者提供了极大方便。</h4>
+							<h2>1、临时关闭防火墙iptables和SELinux</h2>
+							<h4> 	开启： service iptables start</h4>
+							<h4> 	关闭： service iptables stop</h4>
+							<h4> 	setenforce 1 设置SELinux 成为enforcing模式</h4>
+							<h4> 	setenforce 0 设置SELinux 成为permissive模式</h4>
+							<h2>2、yum源安装Samba服务</h2>
+							<h3>（1）安装状况</h3>
+							<h4> 	[root@localhost bin]# rpm -qa|grep samba</h4>
+							<h4> 	samba-winbind-clients-3.6.23-36.el6<em>8.x86</em>64</h4>
+							<h4> 	samba-client-3.6.23-36.el6<em>8.x86</em>64</h4>
+							<h4> 	samba-3.6.23-36.el6<em>8.x86</em>64</h4>
+							<h4> 	samba-common-3.6.23-36.el6<em>8.x86</em>64</h4>
+							<h4> 	samba-swat-3.6.23-36.el6<em>8.x86</em>64</h4>
+							<h4> 	samba-winbind-3.6.23-36.el6<em>8.x86</em>64</h4>
+							<h4> 	[root@localhost bin]#</h4>
+							<h3>（2）安装包说明</h3>
+							<h4> 	samba-common-3.5.10-125.el6.x86_64               //主要提供samba服务器的设置文件与设置文件语法检验程序testparm</h4>
+							<h4> 	samba-client-3.5.10-125.el6.x86_64                    //客户端软件，主要提供linux主机作为客户端时，所需要的工具指令集</h4>
+							<h4> 	samba-swat-3.5.10-125.el6.x86_64                    //基于https协议的samba服务器web配置界面</h4>
+							<h4> 	samba-3.5.10-125.el6.x86_64                            //服务器端软件，主要提供samba服务器的守护程序，共享文档，日志的轮替，开机</h4>
+							<h3>（3）启动Samba服务器</h3>
+							<h4> 通过/etc/init.d/smb start/stop/restart来启动、关闭、重启Samba服务</h4>
+							<h3>（4）查看Samba服务启动情况</h3>
+							<h4> service smb status</h4>
+							<h3>（5）设置开机自启动</h3>
+							<h4> chkconfig --level 35 smb on             //在3、5级别上自动运行samba服务</h4>
+							<h2>3、配置Samba服务</h2>
+							<h4>Samba的主配置文件为/etc/samba/smb.conf</h4>
+							<h4>主配置文件由两部分构成</h4>
+							<p>Global Settings (55-245行)</p>
+							<h4>该设置都是与Samba服务整体运行环境有关的选项，它的设置项目是针对所有共享资源的。</h4>
+							<p>Share Definitions （246-尾行）</p>
+							<h4>该设置针对的是共享目录个别的设置，只对当前的共享资源起作用。</h4>
+							<h4>(1)备份配置文件，配置自己的选项</h4>
+							<pre><code>#cp -p /etc/samba/smb.conf    /etc/samba/smb.conf.backup
+							</code></pre>
+
+							<h4>(2) 设置共享目录为/share</h4>
+							<pre><code># 设置匿名用户可以下载或上传共享文件，给/share目录授权为nobody权限
+							# chown -R nobody:nobody share/
+
+							# smb.conf配置文件增加
+							[public]                                          #设置针对的是共享目录个别的设置，只对当前的共享资源起作用
+							comment = Public Stuff                            #对共享目录的说明文件，自己可以定义说明信息
+							path = /share                                     #用来指定共享的目录，必选项
+							public = yes                                      #所有人可查看,等效于guest ok = yes
+							</code></pre>
+
+							<h4>(3) 重启smb服务</h4>
+							<pre><code>/etc/init.d/smb restart
+							/etc/init.d/nmb restart
+							</code></pre>
+
+							<h4>(4)测试smb.conf配置是否正确</h4>
+							<pre><code>testparm
+							</code></pre>
+
+							<h4>(5) 访问Samba服务器的共享文件</h4>
+							<p>在Linux下访问Samba服务器的共享文件\</p>
+							<pre><code># smbclient //192.168.247.131/public
+							#出错：session setup failed: NT_STATUS_LOGON_FAILURE
+							#原因：执行smbclient命令的用户ID没有成为samba服务的用户
+							# smbpasswd -a root
+							</code></pre>
+
+							<p>在windows下访问Samba服务器的共享文件</p>
+							<pre><code># \\192.168.247.131 
+							</code></pre>
+
+							<h3>参考链接  1、 <a href="http://www.cnblogs.com/mchina/archive/2012/12/18/2816717.html" target="_blank">CentOS 6.3下Samba服务器的安装与配置</a></h3>
+
+                        </div>
+                    </article>
+
+                </div>
+                <aside class="col-md-4 blog-aside">
+                    
+                    <div class="aside-widget">
+                        <header>
+                            <h3>Featured Post</h3>
+                        </header>
+                        <div class="body">
+                            <ul class="clean-list">
+                                <li><a href="">Clean - Responsive HTML5 Template</a></li>
+                                <li><a href="">Responsive Pricing Table</a></li>
+                                <li><a href="">Yellow HTML5 Template</a></li>
+                                <li><a href="">Blackor Responsive Theme</a></li>
+                                <li><a href="">Portfolio Bootstrap Template</a></li>
+                                <li><a href="">Clean Slider Template</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                
+                    <div class="aside-widget">
+                        <header>
+                            <h3>Related Post</h3>
+                        </header>
+                        <div class="body">
+                            <ul class="clean-list">
+                                <li><a href="">Blackor Responsive Theme</a></li>
+                                <li><a href="">Portfolio Bootstrap Template</a></li>
+                                <li><a href="">Clean Slider Template</a></li>
+                                <li><a href="">Clean - Responsive HTML5 Template</a></li>
+                                <li><a href="">Responsive Pricing Table</a></li>
+                                <li><a href="">Yellow HTML5 Template</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="aside-widget">
+                        <header>
+                            <h3>Tags</h3>
+                        </header>
+                        <div class="body clearfix">
+                            <ul class="tags">
+                                <li><a href="#">HTML5</a></li>
+                                <li><a href="#">CSS3</a></li>
+                                <li><a href="#">COMPONENTS</a></li>
+                                <li><a href="#">TEMPLATE</a></li>
+                                <li><a href="#">PLUGIN</a></li>
+                                <li><a href="#">BOOTSTRAP</a></li>
+                                <li><a href="#">TUTORIAL</a></li>
+                                <li><a href="#">UI/UX</a></li>                            
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="widewrapper footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 footer-widget">
+                        <h3> <i class="fa fa-user"></i>About</h3>
+
+                       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab animi laboriosam nostrum consequatur fugiat at, labore praesentium modi, quasi dolorum debitis reiciendis facilis, dolor saepe sint nemo, earum molestias quas.</p>
+                       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, error aspernatur assumenda quae eveniet.</p>
+                    </div>
+
+                    <div class="col-md-4 footer-widget">
+                        <h3> <i class="fa fa-pencil"></i> Recent Post</h3>
+                        <ul class="clean-list">
+                            <li><a href="">Clean - Responsive HTML5 Template</a></li>
+                            <li><a href="">Responsive Pricing Table</a></li>
+                            <li><a href="">Yellow HTML5 Template</a></li>
+                            <li><a href="">Blackor Responsive Theme</a></li>
+                            <li><a href="">Portfolio Bootstrap Template</a></li>
+                            <li><a href="">Clean Slider Template</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-4 footer-widget">
+                        <h3> <i class="fa fa-envelope"></i>Contact Me</h3>
+
+                        <p>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil fugiat, cupiditate veritatis excepturi tempore explicabo.</p>
+                         <div class="footer-widget-icon">
+                            <i class="fa fa-facebook"></i><i class="fa fa-twitter"></i><i class="fa fa-google"></i>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+        <div class="widewrapper copyright">
+                Copyright 2015
+        </div>
+    </footer>
+
+    <!--
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/modernizr.js"></script>
+	-->
+</body>
+</html>

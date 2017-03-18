@@ -1,3 +1,7 @@
+#### Samba是在Linux和UNIX系统上实现SMB协议的一个免费软件，由服务器及客户端程序构成。
+
+#### 为了实现Windows主机与Linux服务器之间的资源共享，Linux操作系统提供了Samba服务，Samba服务为两种不同的操作系统架起了一座桥梁，使Linux系统和Windows系统之间能够实现互相通信，为广泛的Linux爱好者提供了极大方便。
+
 # centos 搭建Samba服务环境
 
 ## 1、临时关闭防火墙iptables和SELinux
