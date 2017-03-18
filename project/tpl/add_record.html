@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 <title>HTML5信息提交界面</title>
 
 <link rel="stylesheet" type="text/css" href="css/default.css">
@@ -11,12 +11,15 @@
 <link rel="stylesheet" href="css/swiper.min.css" type="text/css">
 <!--必要样式-->
 <link rel="stylesheet" type="text/css" href="css/styles2.css?3">
+
+<link rel="stylesheet" type="text/css" href="date-plugin/datedropper.css">
+<link rel="stylesheet" type="text/css" href="date-plugin/timedropper.min.css">
 </head>
 <body>
-<div class='record_title'>
+<div class="record_title">
 	<span>记账</span>
+	<input type="text" id="pickdate" value="" />
 </div>
-<input type="date" value="2015-09-24"/>
 <div class='record'>
   <div class='record_fields'>
 	<div class="record_fields_order_type">
@@ -88,5 +91,47 @@
 <script src="js/swiper.min.js"></script>
 <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
 <script src="js/add_record.js"></script>
+<script type="text/javascript" src="date-plugin/jquery-1.12.3.min.js"></script>
+<script src="date-plugin/datedropper.min.js"></script>
+<script src="date-plugin/timedropper.min.js"></script>
+<script>
+$("#pickdate").dateDropper({
+	color:'#f87a54',
+	animate: false,
+	format: 'Y年m月d日',
+	maxYear: '2020'
+});
+</script>
+<script type="text/javascript">
+date()
+//获取当天日期
+function date()
+{
+  var date=new Date();
+  var year=date.getFullYear();
+  var month=date.getMonth()+1;
+  var day=date.getDate();
+  /*var hour="00"+date.getHours();
+    hour=hour.substr(hour.length-2);
+  var minute="00"+date.getMinutes();
+    minute=minute.substr(minute.length-2);
+  var second="00"+date.getSeconds();
+    second=second.substr(second.length-2);
+  var week=date.getDay();*/
+  /*switch(week)
+  {
+    case 1:week="星期一 ";break;
+    case 2:week="星期二 ";break;
+    case 3:week="星期三 ";break;
+    case 4:week="星期四 ";break;
+    case 5:week="星期五 ";break;
+    case 6:week="星期六 ";break;
+    case 0:week="星期日 ";break;
+    default:week="";break;
+  }*/
+  $("#pickdate").val(year+"年"+month+"月"+day+"日");
+}
+
+</script>
 </body>
 </html>
