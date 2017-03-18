@@ -1131,22 +1131,22 @@
 	$.mobiscroll.i18n.zh = $.extend($.mobiscroll.i18n.zh, {
 			dateFormat: 'yyyy-mm-dd',
 			dateOrder: 'yymmdd',
-			dayNames: ['ÖÜÈÕ', 'ÖÜÒ»;', 'ÖÜ¶ş;', 'ÖÜÈı', 'ÖÜËÄ', 'ÖÜÎå', 'ÖÜÁù'],
-			dayNamesShort: ['ÈÕ', 'Ò»', '¶ş', 'Èı', 'ËÄ', 'Îå', 'Áù'],
-			dayText: 'ÈÕ',
-			hourText: 'Ê±',
-			minuteText: '·Ö',
-			monthNames: ['Ò»ÔÂ', '¶şÔÂ', 'ÈıÔÂ', 'ËÄÔÂ', 'ÎåÔÂ', 'ÁùÔÂ', 'ÆßÔÂ', '°ËÔÂ', '¾ÅÔÂ', 'Ê®ÔÂ', 'Ê®Ò»ÔÂ', 'Ê®¶şÔÂ'],
-			monthNamesShort: ['1ÔÂ', '2ÔÂ', '3ÔÂ', '4ÔÂ', '5ÔÂ', '6ÔÂ', '7ÔÂ', '8ÔÂ', '9ÔÂ', '10ÔÂ', '11ÔÂ', '12ÔÂ'],
-			monthText: 'ÔÂ',
-			secText: 'Ãë',
+			dayNames: ['å‘¨æ—¥', 'å‘¨ä¸€;', 'å‘¨äºŒ;', 'å‘¨ä¸‰', 'å‘¨å››', 'å‘¨äº”', 'å‘¨å…­'],
+			dayNamesShort: ['æ—¥', 'ä¸€', 'äºŒ', 'ä¸‰', 'å››', 'äº”', 'å…­'],
+			dayText: 'æ—¥',
+			hourText: 'æ—¶',
+			minuteText: 'åˆ†',
+			monthNames: ['ä¸€æœˆ', 'äºŒæœˆ', 'ä¸‰æœˆ', 'å››æœˆ', 'äº”æœˆ', 'å…­æœˆ', 'ä¸ƒæœˆ', 'å…«æœˆ', 'ä¹æœˆ', 'åæœˆ', 'åä¸€æœˆ', 'åäºŒæœˆ'],
+			monthNamesShort: ['1æœˆ', '2æœˆ', '3æœˆ', '4æœˆ', '5æœˆ', '6æœˆ', '7æœˆ', '8æœˆ', '9æœˆ', '10æœˆ', '11æœˆ', '12æœˆ'],
+			monthText: 'æœˆ',
+			secText: 'ç§’',
 			timeFormat: 'HH:ii',
 			timeWheels: 'HHii',
-			yearText: 'Äê'
+			yearText: 'å¹´'
 		});
 		$.mobiscroll.i18n.zh = $.extend($.mobiscroll.i18n.zh, {
-			setText: 'È·¶¨',
-			cancelText: 'È¡Ïû'
+			setText: 'ç¡®å®š',
+			cancelText: 'å–æ¶ˆ'
 		});
 		var theme = {
 			defaults: {
