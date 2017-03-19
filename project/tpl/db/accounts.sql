@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2017-03-18 17:51:53
+Date: 2017-03-19 16:22:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -84,6 +84,7 @@ DROP TABLE IF EXISTS `ac_user`;
 CREATE TABLE `ac_user` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(255) NOT NULL COMMENT '登录用户名',
+  `password` varchar(255) NOT NULL COMMENT '登录密码',
   `create_time` int(10) NOT NULL COMMENT '创建时间',
   `login_time` int(10) NOT NULL COMMENT '最近登录时间',
   `is_delete` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0-正常 1-已删除',
@@ -91,8 +92,9 @@ CREATE TABLE `ac_user` (
   KEY `create_time` (`create_time`),
   KEY `login_time` (`login_time`),
   KEY `id` (`id`) USING BTREE
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='用户表';
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='用户表';
 
 -- ----------------------------
 -- Records of ac_user
 -- ----------------------------
+INSERT INTO `ac_user` VALUES ('2', 'admin', '97f0b9dc7e97e78428d068f4e8885923', '1489905581', '1489910370', '0');
