@@ -274,7 +274,8 @@ make && make install
 
 vim /usr/local/php/php.ini
 
-extension_dir = "/usr/local/php/lib/php/extensions/no-debug-non-zts-20100525"
+;extension_dir = "/usr/local/php/lib/php/extensions/no-debug-non-zts-20100525"
+(该目录下为安装的扩展.so文件,单个加载.so，否则pdo模板无法加载)
 
 extension = "memcache.so"
 

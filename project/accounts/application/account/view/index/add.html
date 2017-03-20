@@ -36,10 +36,11 @@
 	<input type="text" id="pickdate" value="" readonly />
 </div>
 <div class='record'>
+<form method="post" action="{:url('account/index/doAdd')}">
   <div class='record_fields'>
 	<div class="record_fields_order_type">
-		<button order_type="0" class="button-left active">支出</button>
-		<button order_type="1" class="button-right nonactive">收入</button>
+		<button tpye="button" order_type="0" class="button-left active" onClick="return false;">支出</button>
+		<button tpye="button" order_type="1" class="button-right nonactive" onClick="return false;">收入</button>
 		<input type="hidden" name="order_type" id="order_type" value="0">
 	</div>
 	<input type="hidden" name="tid" id="tid" value="1">
@@ -92,7 +93,7 @@
 	  <div class='icon'>
 		<img src='__STATIC__img/writing.png'>
 	  </div>
-	  <textarea style="max-width: 256px;" class="remark" placeholder='备注' ></textarea>
+	  <textarea style="max-width: 256px;" name="remark" class="remark" placeholder='备注' ></textarea>
 	  <div class='validation'>
 		<img src='__STATIC__img/tick.png'>
 	  </div>
@@ -101,6 +102,7 @@
 	  <input type='submit' value='保存'>
 	</div>
   </div>
+  </form>
 </div>
 <footer>
 	<ul>
