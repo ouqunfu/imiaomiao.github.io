@@ -2,20 +2,23 @@
 // +----------------------------------------------------------------------
 // | ThinkPHP [ WE CAN DO IT JUST THINK ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2006-2016 http://thinkphp.cn All rights reserved.
+// | Copyright (c) 2006~2016 http://thinkphp.cn All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
-// | Author: 流年 <liu21st@gmail.com>
+// | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 
-// 应用公共文件
+namespace think\config\driver;
 
-function get_record_type($tid){
-	
-	$map['is_delete'] = 0;
-	$map['id'] = $tid;
-	$type_info = db('type')->field("name")->where($map)->find();
-		
-	return $type_info['name'];	
+class Json
+{
+    public function parse($config)
+    {
+        if (is_file($config)) {
+            $config = file_get_contents($config);
+        }
+        $result = json_decode($config, true);
+        return $result;
+    }
 }

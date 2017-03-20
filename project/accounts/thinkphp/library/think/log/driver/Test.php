@@ -1,21 +1,30 @@
 <?php
 // +----------------------------------------------------------------------
-// | ThinkPHP [ WE CAN DO IT JUST THINK ]
+// | ThinkPHP [ WE CAN DO IT JUST THINK IT ]
 // +----------------------------------------------------------------------
 // | Copyright (c) 2006-2016 http://thinkphp.cn All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
-// | Author: 流年 <liu21st@gmail.com>
+// | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 
-// 应用公共文件
+namespace think\log\driver;
 
-function get_record_type($tid){
-	
-	$map['is_delete'] = 0;
-	$map['id'] = $tid;
-	$type_info = db('type')->field("name")->where($map)->find();
-		
-	return $type_info['name'];	
+/**
+ * 模拟测试输出
+ */
+class Test
+{
+    /**
+     * 日志写入接口
+     * @access public
+     * @param array $log 日志信息
+     * @return bool
+     */
+    public function save(array $log = [])
+    {
+        return true;
+    }
+
 }

@@ -49,13 +49,10 @@
 		</ul>
 	</div>
 	<div class="record_fields_list">
-		<ul class="set-back-color">
-			<li><span class="fl-l tid-type">餐饮</span><span class="fl-r list-money">¥<i>-152.32</i></span></li>
-			<li><span class="fl-l tid-type">餐饮</span><span class="fl-r list-money">¥<i>-152.32</i></span></li>
-			<li><span class="fl-l tid-type">餐饮</span><span class="fl-r list-money">¥<i>-152.32</i></span></li>
-			<li><span class="fl-l tid-type">餐饮</span><span class="fl-r list-money">¥<i>-152.32</i></span></li>
-			<li><span class="fl-l tid-type">餐饮</span><span class="fl-r list-money">¥<i>-152.32</i></span></li>
-			<li><span class="fl-l tid-type">餐饮</span><span class="fl-r list-money">¥<i>-152.32</i></span></li>
+		<ul class="set-back-color" id="expenditure">
+			{volist name="list" id="vo"}
+			<li><span class="fl-l tid-type">{$vo.tid|get_record_type}</span><span class="fl-r list-money">¥<i>-{$vo.money}</i></span></li>
+			{/volist}
 		</ul>
 	</div>
   </div>

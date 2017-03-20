@@ -1,21 +1,20 @@
 <?php
 // +----------------------------------------------------------------------
-// | ThinkPHP [ WE CAN DO IT JUST THINK ]
+// | ThinkPHP [ WE CAN DO IT JUST THINK IT ]
 // +----------------------------------------------------------------------
 // | Copyright (c) 2006-2016 http://thinkphp.cn All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
-// | Author: 流年 <liu21st@gmail.com>
+// | Author: yunwuxin <448901948@qq.com>
 // +----------------------------------------------------------------------
 
-// 应用公共文件
+namespace think;
 
-function get_record_type($tid){
-	
-	$map['is_delete'] = 0;
-	$map['id'] = $tid;
-	$type_info = db('type')->field("name")->where($map)->find();
-		
-	return $type_info['name'];	
-}
+// ThinkPHP 引导文件
+// 加载基础文件
+require __DIR__ . '/base.php';
+
+// 执行应用
+App::initCommon();
+Console::init();

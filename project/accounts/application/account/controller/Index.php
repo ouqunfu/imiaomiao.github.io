@@ -28,7 +28,7 @@ class Index extends \think\Controller
     {
 		$map['is_delete'] = 0;
 		$map['create_time'] = ['>',strtotime(date('Y-m-d',time()))];
-		$list = db('record')->field("*")->where($map)->select();
+		$list = db('record')->field("*")->where($map)->order("create_time desc")->select();
 		
 		$this->assign("list", $list);
 		
