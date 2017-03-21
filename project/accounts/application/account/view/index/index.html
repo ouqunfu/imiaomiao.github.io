@@ -35,7 +35,8 @@
 <body>
 <div class="record_title">
 	<span>明细</span>
-	<input type="text" id="pickdate" value="" readonly />
+	<input type="text" id="pickdate" name="pickdate" value="{$pickdate}" readonly />
+	<a href="{:url('account/index/add')}"><img src="__STATIC__img/Add_32px.png" /></a> 
 </div>
 <div class='record'>
   <div class='record_fields'>
@@ -43,9 +44,10 @@
 		<button class="button-left active">支出</button>
 		<button class="button-right nonactive">收入</button>
 	</div>
+	{if $sum_money gt 0}
 	<div class="record_fields_list" style="margin-top: 5px;">
 		<ul class="set-back-color">
-			<li><span class="fl-l tid-type">支出</span><span class="fl-r list-money">¥<i>-152.32</i></span></li>
+			<li><span class="fl-l tid-type">支出</span><span class="fl-r list-money">¥<i>-{$sum_money}</i></span></li>
 		</ul>
 	</div>
 	<div class="record_fields_list">
@@ -55,6 +57,7 @@
 			{/volist}
 		</ul>
 	</div>
+	{/if}
   </div>
 </div>
 <footer>
@@ -86,43 +89,20 @@ $(function () {
 		showNow: true,
 		nowText: "今天",
 		startYear: currYear - 10, //开始年份
-		endYear: currYear + 10 //结束年份
+		endYear: currYear + 10, //结束年份
+		onSelect:mobiscroll_select
 	};
 
 	$("#pickdate").mobiscroll($.extend(opt['date'], opt['default']));
 
 });
-</script>
-<script type="text/javascript">
-date()
-//获取当天日期
-function date()
-{
-  var date=new Date();
-  var year=date.getFullYear();
-  var month=date.getMonth()+1;
-  var day=date.getDate();
-  /*var hour="00"+date.getHours();
-    hour=hour.substr(hour.length-2);
-  var minute="00"+date.getMinutes();
-    minute=minute.substr(minute.length-2);
-  var second="00"+date.getSeconds();
-    second=second.substr(second.length-2);
-  var week=date.getDay();*/
-  /*switch(week)
-  {
-    case 1:week="星期一 ";break;
-    case 2:week="星期二 ";break;
-    case 3:week="星期三 ";break;
-    case 4:week="星期四 ";break;
-    case 5:week="星期五 ";break;
-    case 6:week="星期六 ";break;
-    case 0:week="星期日 ";break;
-    default:week="";break;
-  }*/
-	$("#pickdate").val(year+"年"+month+"月"+day+"日");
+function mobiscroll_select(valueText,inst){
+	//valueText是选中的值
+	//console.log("valueText : " + valueText);
+	//mobiscroll对象
+	//console.log("inst : " + inst);
+	window.location.href="{:url('account/index/getDateRecord')}?pickdate="+valueText;
 }
-
 </script>
 </body>
 </html>

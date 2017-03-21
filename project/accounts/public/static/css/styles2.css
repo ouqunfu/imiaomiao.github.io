@@ -78,11 +78,16 @@ body .record_title input{
 	border: none;
 	color: #e6e7ef;
 	position: relative;
-	top: -4px;
+	top: -2.5px;
 	left: 18%;
 	width: 35%;
 	text-align: center;
 	border-radius:10px;
+}
+body .record_title img{
+	float: right;
+    margin-right: 10px;
+    margin-top: 7.5px;
 }
 body .record_fields{
 	padding: 0 7%;

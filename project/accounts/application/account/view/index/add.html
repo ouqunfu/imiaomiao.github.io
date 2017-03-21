@@ -31,12 +31,12 @@
 <link href="__STATIC__mobiscroll/css/mobiscroll_date.css" rel="stylesheet" />
 </head>
 <body>
+<form method="post" action="{:url('account/index/doAdd')}">
 <div class="record_title">
 	<span>记账</span>
-	<input type="text" id="pickdate" value="" readonly />
+	<input type="text" id="pickdate" name="pickdate" value="{$pickdate}" readonly />
 </div>
 <div class='record'>
-<form method="post" action="{:url('account/index/doAdd')}">
   <div class='record_fields'>
 	<div class="record_fields_order_type">
 		<button tpye="button" order_type="0" class="button-left active" onClick="return false;">支出</button>
@@ -101,9 +101,9 @@
 	<div class='record_fields_submit'>
 	  <input type='submit' value='保存'>
 	</div>
-  </div>
-  </form>
+  </div> 
 </div>
+</form>
 <footer>
 	<ul>
 		<li class="active"><a href="{:url('account/index/index')}">明细</a></li>
@@ -139,37 +139,6 @@ $(function () {
 	$("#pickdate").mobiscroll($.extend(opt['date'], opt['default']));
 
 });
-</script>
-<script type="text/javascript">
-date()
-//获取当天日期
-function date()
-{
-  var date=new Date();
-  var year=date.getFullYear();
-  var month=date.getMonth()+1;
-  var day=date.getDate();
-  /*var hour="00"+date.getHours();
-    hour=hour.substr(hour.length-2);
-  var minute="00"+date.getMinutes();
-    minute=minute.substr(minute.length-2);
-  var second="00"+date.getSeconds();
-    second=second.substr(second.length-2);
-  var week=date.getDay();*/
-  /*switch(week)
-  {
-    case 1:week="星期一 ";break;
-    case 2:week="星期二 ";break;
-    case 3:week="星期三 ";break;
-    case 4:week="星期四 ";break;
-    case 5:week="星期五 ";break;
-    case 6:week="星期六 ";break;
-    case 0:week="星期日 ";break;
-    default:week="";break;
-  }*/
-	$("#pickdate").val(year+"年"+month+"月"+day+"日");
-}
-
 </script>
 </body>
 </html>
