@@ -119,4 +119,4 @@
 
 #### 输入变量过滤可以在config.php文件中配置，也可以在接收时再多虑。
 
-#### 项目源码托管在在这里 [简易记账系统](http://git.oschina.net/ouqunfu/Accounts-olver)
+#### 项目源码托管在github [简易记账系统](https://github.com/ouqunfu/accounts)
