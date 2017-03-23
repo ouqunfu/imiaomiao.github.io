@@ -65,6 +65,65 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Linux下使用Hexo搭建github博客" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/22/Linux下使用Hexo搭建github博客.html" class="article-date">
+  <time datetime="2017-03-23T02:19:57.733Z" itemprop="datePublished">2017-03-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="参考链接-Linux下使用Hexo搭建github博客"><a href="#参考链接-Linux下使用Hexo搭建github博客" class="headerlink" title="参考链接 Linux下使用Hexo搭建github博客"></a>参考链接 <a href="http://www.cnblogs.com/zhaoyu1995/p/6239950.html" target="_blank" rel="external">Linux下使用Hexo搭建github博客</a></h4><h3 id="1、安装nodejs"><a href="#1、安装nodejs" class="headerlink" title="1、安装nodejs"></a>1、安装nodejs</h3><h4 id="国内镜像源下载v4-2-2-这里下载的是已经编译好的，解压就可以使用了"><a href="#国内镜像源下载v4-2-2-这里下载的是已经编译好的，解压就可以使用了" class="headerlink" title="国内镜像源下载v4.2.2,这里下载的是已经编译好的，解压就可以使用了"></a>国内镜像源下载v4.2.2,这里下载的是已经编译好的，解压就可以使用了</h4><pre><code>tar zxvf node-v4.2.2-linux-x64.tar.gz
+cd node-v4.2.2-linux-x64.tar.gz/bin
+ls
+./node -v
+</code></pre><p>然后设置全局</p>
+<pre><code>ln -s /home/ferry/www/service-file/node-v4.2.2-linux-x64/bin/node /usr/local/bin/node
+ln -s /home/ferry/www/service-file/node-v4.2.2-linux-x64/bin/npm /usr/local/bin/npm
+</code></pre><p>这样就可以直接使用node命令了</p>
+<h3 id="2、Hexo安装"><a href="#2、Hexo安装" class="headerlink" title="2、Hexo安装"></a>2、Hexo安装</h3><pre><code>执行：
+npm install hexo-cli -g 
+报错:
+node: command not found
+...
+解决：http://www.cnblogs.com/lidonghao/p/3543747.html
+npm config set user 0
+npm config set unsafe-perm true
+</code></pre><p>设置全局</p>
+<pre><code>ln -s /home/ferry/www/service-file/node-v4.2.2-linux-x64/bin/hexo /usr/local/bin/hexo
+</code></pre><p>开始</p>
+<pre><code>hexo init blog
+#这一步是真慢
+cd blog
+npm install
+</code></pre><p>其中_config.yml是配置站点的文件<br>配置站点的url和permalink，这两个分别是你的站点的url host地址以及文章的永久连接</p>
+<pre><code>url: http://www.xxx.com
+root:/
+permalink::year/:month/:day/:title.html
+permalink_defaults:
+</code></pre><p>新增文章<br>    hexo new’github-page-with-hexo’</p>
+<p>生成html</p>
+<pre><code>hexo clean
+hexo generate
+</code></pre><p>把生成的public目录下的文件放到master分支下</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://github.ouqunfu.com/2017/03/22/Linux下使用Hexo搭建github博客.html" data-id="cj0lrtlt600002jpv3foum3is" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-github-page-with-hexo" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/03/22/github-page-with-hexo.html" class="article-date">
@@ -124,7 +183,7 @@ hexo generate
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://github.ouqunfu.com/2017/03/22/github-page-with-hexo.html" data-id="cj0lrlcp8000003pvt6ycyrz9" class="article-share-link">Share</a>
+      <a data-url="http://github.ouqunfu.com/2017/03/22/github-page-with-hexo.html" data-id="cj0lrtltb00012jpv46nr02zx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -169,7 +228,7 @@ hexo generate
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://github.ouqunfu.com/2017/03/22/hello-world.html" data-id="cj0lrlcpd000103pvjfmebgp2" class="article-share-link">Share</a>
+      <a data-url="http://github.ouqunfu.com/2017/03/22/hello-world.html" data-id="cj0lrtltf00022jpvkok347cq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -207,6 +266,10 @@ hexo generate
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/03/22/Linux下使用Hexo搭建github博客.html">(no title)</a>
+          </li>
         
           <li>
             <a href="/2017/03/22/github-page-with-hexo.html">github-page-with-hexo</a>
