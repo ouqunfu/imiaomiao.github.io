@@ -3,17 +3,35 @@
 <head>
   <meta charset="utf-8">
   
-  <title>github-page-with-hexo | Hexo</title>
+  <title>github-page-with-hexo | 麦高稻香的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="参考链接 Linux下使用Hexo搭建github博客1、安装nodejs国内镜像源下载v4.2.2,这里下载的是已经编译好的，解压就可以使用了tar zxvf node-v4.2.2-linux-x64.tar.gz
+cd node-v4.2.2-linux-x64.tar.gz/bin
+ls
+./node -v
+然后设置全局
+ln -s /home/ferry/www/service-file">
+<meta property="og:type" content="article">
 <meta property="og:title" content="github-page-with-hexo">
 <meta property="og:url" content="http://github.ouqunfu.com/2017/03/22/github-page-with-hexo.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:updated_time" content="2017-03-22T08:41:33.542Z">
+<meta property="og:site_name" content="麦高稻香的博客">
+<meta property="og:description" content="参考链接 Linux下使用Hexo搭建github博客1、安装nodejs国内镜像源下载v4.2.2,这里下载的是已经编译好的，解压就可以使用了tar zxvf node-v4.2.2-linux-x64.tar.gz
+cd node-v4.2.2-linux-x64.tar.gz/bin
+ls
+./node -v
+然后设置全局
+ln -s /home/ferry/www/service-file">
+<meta property="og:updated_time" content="2017-03-23T02:13:24.699Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="github-page-with-hexo">
+<meta name="twitter:description" content="参考链接 Linux下使用Hexo搭建github博客1、安装nodejs国内镜像源下载v4.2.2,这里下载的是已经编译好的，解压就可以使用了tar zxvf node-v4.2.2-linux-x64.tar.gz
+cd node-v4.2.2-linux-x64.tar.gz/bin
+ls
+./node -v
+然后设置全局
+ln -s /home/ferry/www/service-file">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="麦高稻香的博客" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -34,8 +52,12 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">麦高稻香的博客</a>
       </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">专注于Web、PHP、服务器、软件架构</a>
+        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -63,7 +85,7 @@
         <section id="main"><article id="post-github-page-with-hexo" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/03/22/github-page-with-hexo.html" class="article-date">
-  <time datetime="2017-03-22T08:41:33.000Z" itemprop="datePublished">2017-03-22</time>
+  <time datetime="2017-03-23T02:12:23.000Z" itemprop="datePublished">2017-03-22</time>
 </a>
     
   </div>
@@ -82,11 +104,44 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h4 id="参考链接-Linux下使用Hexo搭建github博客"><a href="#参考链接-Linux下使用Hexo搭建github博客" class="headerlink" title="参考链接 Linux下使用Hexo搭建github博客"></a>参考链接 <a href="http://www.cnblogs.com/zhaoyu1995/p/6239950.html" target="_blank" rel="external">Linux下使用Hexo搭建github博客</a></h4><h3 id="1、安装nodejs"><a href="#1、安装nodejs" class="headerlink" title="1、安装nodejs"></a>1、安装nodejs</h3><h4 id="国内镜像源下载v4-2-2-这里下载的是已经编译好的，解压就可以使用了"><a href="#国内镜像源下载v4-2-2-这里下载的是已经编译好的，解压就可以使用了" class="headerlink" title="国内镜像源下载v4.2.2,这里下载的是已经编译好的，解压就可以使用了"></a>国内镜像源下载v4.2.2,这里下载的是已经编译好的，解压就可以使用了</h4><pre><code>tar zxvf node-v4.2.2-linux-x64.tar.gz
+cd node-v4.2.2-linux-x64.tar.gz/bin
+ls
+./node -v
+</code></pre><p>然后设置全局</p>
+<pre><code>ln -s /home/ferry/www/service-file/node-v4.2.2-linux-x64/bin/node /usr/local/bin/node
+ln -s /home/ferry/www/service-file/node-v4.2.2-linux-x64/bin/npm /usr/local/bin/npm
+</code></pre><p>这样就可以直接使用node命令了</p>
+<h3 id="2、Hexo安装"><a href="#2、Hexo安装" class="headerlink" title="2、Hexo安装"></a>2、Hexo安装</h3><pre><code>执行：
+npm install hexo-cli -g 
+报错:
+node: command not found
+...
+解决：http://www.cnblogs.com/lidonghao/p/3543747.html
+npm config set user 0
+npm config set unsafe-perm true
+</code></pre><p>设置全局</p>
+<pre><code>ln -s /home/ferry/www/service-file/node-v4.2.2-linux-x64/bin/hexo /usr/local/bin/hexo
+</code></pre><p>开始</p>
+<pre><code>hexo init blog
+#这一步是真慢
+cd blog
+npm install
+</code></pre><p>其中_config.yml是配置站点的文件<br>配置站点的url和permalink，这两个分别是你的站点的url host地址以及文章的永久连接</p>
+<pre><code>url: http://www.xxx.com
+root:/
+permalink::year/:month/:day/:title.html
+permalink_defaults:
+</code></pre><p>新增文章<br>    hexo new’github-page-with-hexo’</p>
+<p>生成html</p>
+<pre><code>hexo clean
+hexo generate
+</code></pre><p>把生成的public目录下的文件放到master分支下</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://github.ouqunfu.com/2017/03/22/github-page-with-hexo.html" data-id="cj0kq5ebk0000mupv44blk8k5" class="article-share-link">Share</a>
+      <a data-url="http://github.ouqunfu.com/2017/03/22/github-page-with-hexo.html" data-id="cj0lrlcp8000003pvt6ycyrz9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -154,7 +209,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2017 John Doe<br>
+      &copy; 2017 麦高稻香<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
