@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>麦高稻香的博客</title>
+  <title>Linux下使用Hexo搭建github博客 | 麦高稻香的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="参考链接 Linux下使用Hexo搭建github博客1、安装nodejs国内镜像源下载v4.2.2,这里下载的是已经编译好的，解压就可以使用了tar zxvf node-v4.2.2-linux-x64.tar.gz
 cd node-v4.2.2-linux-x64.tar.gz/bin
@@ -12,7 +12,7 @@ ls
 然后设置全局
 ln -s /home/ferry/www/service-file">
 <meta property="og:type" content="article">
-<meta property="og:title" content="麦高稻香的博客">
+<meta property="og:title" content="Linux下使用Hexo搭建github博客">
 <meta property="og:url" content="http://github.ouqunfu.com/2017/03/22/Linux下使用Hexo搭建github博客.html">
 <meta property="og:site_name" content="麦高稻香的博客">
 <meta property="og:description" content="参考链接 Linux下使用Hexo搭建github博客1、安装nodejs国内镜像源下载v4.2.2,这里下载的是已经编译好的，解压就可以使用了tar zxvf node-v4.2.2-linux-x64.tar.gz
@@ -21,9 +21,9 @@ ls
 ./node -v
 然后设置全局
 ln -s /home/ferry/www/service-file">
-<meta property="og:updated_time" content="2017-03-22T10:00:04.576Z">
+<meta property="og:updated_time" content="2017-03-24T09:37:11.392Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="麦高稻香的博客">
+<meta name="twitter:title" content="Linux下使用Hexo搭建github博客">
 <meta name="twitter:description" content="参考链接 Linux下使用Hexo搭建github博客1、安装nodejs国内镜像源下载v4.2.2,这里下载的是已经编译好的，解压就可以使用了tar zxvf node-v4.2.2-linux-x64.tar.gz
 cd node-v4.2.2-linux-x64.tar.gz/bin
 ls
@@ -85,12 +85,22 @@ ln -s /home/ferry/www/service-file">
         <section id="main"><article id="post-Linux下使用Hexo搭建github博客" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/03/22/Linux下使用Hexo搭建github博客.html" class="article-date">
-  <time datetime="2017-03-23T02:19:57.733Z" itemprop="datePublished">2017-03-22</time>
+  <time datetime="2017-03-23T06:40:09.000Z" itemprop="datePublished">2017-03-22</time>
 </a>
     
   </div>
   <div class="article-inner">
     
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux下使用Hexo搭建github博客
+    </h1>
+  
+
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
@@ -122,16 +132,28 @@ npm install
 root:/
 permalink::year/:month/:day/:title.html
 permalink_defaults:
-</code></pre><p>新增文章<br>    hexo new’github-page-with-hexo’</p>
+</code></pre><p>deploy配置<br>    deploy:<br>      type: git<br>      repo: git@github.com:ouqunfu/imiaomiao.github.io.git<br>      branch: master</p>
+<p>新增文章<br>    hexo new’github-page-with-hexo’</p>
 <p>生成html</p>
 <pre><code>hexo clean
 hexo generate
 </code></pre><p>把生成的public目录下的文件放到master分支下</p>
+<p>或者配置deploy,发布到github</p>
+<pre><code>hexo deploy
+出错：ERROR Deployer not found: git
+解决：npm install hexo-deployer-git --save
+hexo deploy
+出错：
+解决：用 sudo ssh-keygen -t rsa -C “xxx@xxx.com”加上sudo在linux的root目录下创建ssh。
 
+然后利用cat 命令 gedit 或者vim打开在root目录下的ssh。sudo cat /var/root/.ssh/id_rsa.pub
+
+在github上面进行ssh的粘贴。
+</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://github.ouqunfu.com/2017/03/22/Linux下使用Hexo搭建github博客.html" data-id="cj0lse4zi00009vpvm9lu0ao6" class="article-share-link">Share</a>
+      <a data-url="http://github.ouqunfu.com/2017/03/22/Linux下使用Hexo搭建github博客.html" data-id="cj0nmxcsl0001kipvusk070qi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -140,19 +162,19 @@ hexo generate
     
 <nav id="article-nav">
   
-    <a href="/2017/03/22/test-deploy.html" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/03/22/Dependent-依赖.html" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          test-deploy
+          Dependent-依赖
         
       </div>
     </a>
   
   
-    <a href="/2017/03/22/github-page-with-hexo.html" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/03/22/centos下安装编译安装git-2.3.0.html" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">github-page-with-hexo</div>
+      <div class="article-nav-title">centos下安装编译安装git-2.3.0</div>
     </a>
   
 </nav>
@@ -189,19 +211,23 @@ hexo generate
       <ul>
         
           <li>
-            <a href="/2017/03/22/test-deploy.html">test-deploy</a>
+            <a href="/2017/03/22/Dependent-依赖.html">Dependent-依赖</a>
           </li>
         
           <li>
-            <a href="/2017/03/22/Linux下使用Hexo搭建github博客.html">(no title)</a>
+            <a href="/2017/03/22/Linux下使用Hexo搭建github博客.html">Linux下使用Hexo搭建github博客</a>
           </li>
         
           <li>
-            <a href="/2017/03/22/github-page-with-hexo.html">github-page-with-hexo</a>
+            <a href="/2017/03/22/centos下安装编译安装git-2.3.0.html">centos下安装编译安装git-2.3.0</a>
           </li>
         
           <li>
-            <a href="/2017/03/22/hello-world.html">Hello World</a>
+            <a href="/2017/03/22/lnmp下部署thinkphp5项目.html">lnmp下部署thinkphp5项目</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/mirrors.html">国内开源镜像mirrors</a>
           </li>
         
       </ul>

@@ -65,10 +65,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-test-deploy" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Dependent-依赖" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/03/22/test-deploy.html" class="article-date">
-  <time datetime="2017-03-23T02:31:54.000Z" itemprop="datePublished">2017-03-22</time>
+    <a href="/2017/03/22/Dependent-依赖.html" class="article-date">
+  <time datetime="2017-03-23T06:40:09.000Z" itemprop="datePublished">2017-03-22</time>
 </a>
     
   </div>
@@ -79,7 +79,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/22/test-deploy.html">test-deploy</a>
+      <a class="article-title" href="/2017/03/22/Dependent-依赖.html">Dependent-依赖</a>
     </h1>
   
 
@@ -87,11 +87,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>依赖</p>
+<pre><code>yum install -y wget gcc gcc-c++ autoconf libjpeg libjpeg-devel perl perl* perl-CPAN libpng libpng-devel freetype freetype-devel libxml2 libxml2-devel zlib zlib-devel glibc glibc-devel glib2 glib2-devel bzip2 bzip2-devel ncurses ncurses-devel curl curl-devel e2fsprogs e2fsprogs-devel krb5 krb5-devel libidn libidn-devel openssl openssl-devel openldap openldap-devel nss_ldap openldap-clients openldap-servers png jpeg autoconf gcc cmake make gcc-c++ gcc ladp ldap* ncurses ncurses-devel zlib zlib-devel zlib-static pcre pcre-devel pcre-static openssl openssl-devel perl libtoolt openldap-devel libxml2-devel ntpdate cmake gd* gd2 ImageMagick-devel jpeg jpeg* pcre-dev* fontconfig libpng libxml2 zip unzip gzip
+</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://github.ouqunfu.com/2017/03/22/test-deploy.html" data-id="cj0lse4zx00039vpvfbx688wm" class="article-share-link">Share</a>
+      <a data-url="http://github.ouqunfu.com/2017/03/22/Dependent-依赖.html" data-id="cj0nmxcsg0000kipv9k8f2isd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -104,66 +106,7 @@
     <article id="post-Linux下使用Hexo搭建github博客" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/03/22/Linux下使用Hexo搭建github博客.html" class="article-date">
-  <time datetime="2017-03-23T02:19:57.733Z" itemprop="datePublished">2017-03-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="参考链接-Linux下使用Hexo搭建github博客"><a href="#参考链接-Linux下使用Hexo搭建github博客" class="headerlink" title="参考链接 Linux下使用Hexo搭建github博客"></a>参考链接 <a href="http://www.cnblogs.com/zhaoyu1995/p/6239950.html" target="_blank" rel="external">Linux下使用Hexo搭建github博客</a></h4><h3 id="1、安装nodejs"><a href="#1、安装nodejs" class="headerlink" title="1、安装nodejs"></a>1、安装nodejs</h3><h4 id="国内镜像源下载v4-2-2-这里下载的是已经编译好的，解压就可以使用了"><a href="#国内镜像源下载v4-2-2-这里下载的是已经编译好的，解压就可以使用了" class="headerlink" title="国内镜像源下载v4.2.2,这里下载的是已经编译好的，解压就可以使用了"></a>国内镜像源下载v4.2.2,这里下载的是已经编译好的，解压就可以使用了</h4><pre><code>tar zxvf node-v4.2.2-linux-x64.tar.gz
-cd node-v4.2.2-linux-x64.tar.gz/bin
-ls
-./node -v
-</code></pre><p>然后设置全局</p>
-<pre><code>ln -s /home/ferry/www/service-file/node-v4.2.2-linux-x64/bin/node /usr/local/bin/node
-ln -s /home/ferry/www/service-file/node-v4.2.2-linux-x64/bin/npm /usr/local/bin/npm
-</code></pre><p>这样就可以直接使用node命令了</p>
-<h3 id="2、Hexo安装"><a href="#2、Hexo安装" class="headerlink" title="2、Hexo安装"></a>2、Hexo安装</h3><pre><code>执行：
-npm install hexo-cli -g 
-报错:
-node: command not found
-...
-解决：http://www.cnblogs.com/lidonghao/p/3543747.html
-npm config set user 0
-npm config set unsafe-perm true
-</code></pre><p>设置全局</p>
-<pre><code>ln -s /home/ferry/www/service-file/node-v4.2.2-linux-x64/bin/hexo /usr/local/bin/hexo
-</code></pre><p>开始</p>
-<pre><code>hexo init blog
-#这一步是真慢
-cd blog
-npm install
-</code></pre><p>其中_config.yml是配置站点的文件<br>配置站点的url和permalink，这两个分别是你的站点的url host地址以及文章的永久连接</p>
-<pre><code>url: http://www.xxx.com
-root:/
-permalink::year/:month/:day/:title.html
-permalink_defaults:
-</code></pre><p>新增文章<br>    hexo new’github-page-with-hexo’</p>
-<p>生成html</p>
-<pre><code>hexo clean
-hexo generate
-</code></pre><p>把生成的public目录下的文件放到master分支下</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://github.ouqunfu.com/2017/03/22/Linux下使用Hexo搭建github博客.html" data-id="cj0lse4zi00009vpvm9lu0ao6" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-github-page-with-hexo" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/22/github-page-with-hexo.html" class="article-date">
-  <time datetime="2017-03-23T02:12:23.000Z" itemprop="datePublished">2017-03-22</time>
+  <time datetime="2017-03-23T06:40:09.000Z" itemprop="datePublished">2017-03-22</time>
 </a>
     
   </div>
@@ -174,7 +117,7 @@ hexo generate
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/22/github-page-with-hexo.html">github-page-with-hexo</a>
+      <a class="article-title" href="/2017/03/22/Linux下使用Hexo搭建github博客.html">Linux下使用Hexo搭建github博客</a>
     </h1>
   
 
@@ -210,16 +153,28 @@ npm install
 root:/
 permalink::year/:month/:day/:title.html
 permalink_defaults:
-</code></pre><p>新增文章<br>    hexo new’github-page-with-hexo’</p>
+</code></pre><p>deploy配置<br>    deploy:<br>      type: git<br>      repo: git@github.com:ouqunfu/imiaomiao.github.io.git<br>      branch: master</p>
+<p>新增文章<br>    hexo new’github-page-with-hexo’</p>
 <p>生成html</p>
 <pre><code>hexo clean
 hexo generate
 </code></pre><p>把生成的public目录下的文件放到master分支下</p>
+<p>或者配置deploy,发布到github</p>
+<pre><code>hexo deploy
+出错：ERROR Deployer not found: git
+解决：npm install hexo-deployer-git --save
+hexo deploy
+出错：
+解决：用 sudo ssh-keygen -t rsa -C “xxx@xxx.com”加上sudo在linux的root目录下创建ssh。
 
+然后利用cat 命令 gedit 或者vim打开在root目录下的ssh。sudo cat /var/root/.ssh/id_rsa.pub
+
+在github上面进行ssh的粘贴。
+</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://github.ouqunfu.com/2017/03/22/github-page-with-hexo.html" data-id="cj0lse4zp00019vpvgh5ntwff" class="article-share-link">Share</a>
+      <a data-url="http://github.ouqunfu.com/2017/03/22/Linux下使用Hexo搭建github博客.html" data-id="cj0nmxcsl0001kipvusk070qi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -229,10 +184,10 @@ hexo generate
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-centos下安装编译安装git-2.3.0" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/03/22/hello-world.html" class="article-date">
-  <time datetime="2017-03-23T02:00:43.351Z" itemprop="datePublished">2017-03-22</time>
+    <a href="/2017/03/22/centos下安装编译安装git-2.3.0.html" class="article-date">
+  <time datetime="2017-03-23T06:40:09.000Z" itemprop="datePublished">2017-03-22</time>
 </a>
     
   </div>
@@ -243,7 +198,7 @@ hexo generate
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/22/hello-world.html">Hello World</a>
+      <a class="article-title" href="/2017/03/22/centos下安装编译安装git-2.3.0.html">centos下安装编译安装git-2.3.0</a>
     </h1>
   
 
@@ -251,20 +206,630 @@ hexo generate
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p>Git是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。</p>
+<p>Git是一个开源的分布式版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。[2]  Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。</p>
+<p>git 安装</p>
+<p>本机yum源的git是低版本的git-1.7.0,安装之后无法正常使用，所以在不更改yum源的情况下，选择编译安装2.3.0版本</p>
+<p>生成 configure命令</p>
+<p>make configure</p>
+<p>报错： GIT_VERSION = 2.3.0<br>    GEN configure<br>/bin/sh: autoconf: command not found<br>make: <em>*</em> [configure] Error 127</p>
+<p>yum install autoconf automake libtool</p>
+<p>./configure –prefix=/usr/local/git</p>
+<p>make &amp;&amp; make install</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://github.ouqunfu.com/2017/03/22/hello-world.html" data-id="cj0lse4zu00029vpv8kqc2arp" class="article-share-link">Share</a>
+      <a data-url="http://github.ouqunfu.com/2017/03/22/centos下安装编译安装git-2.3.0.html" data-id="cj0nmxcsq0002kipv7tqact0n" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-lnmp下部署thinkphp5项目" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/22/lnmp下部署thinkphp5项目.html" class="article-date">
+  <time datetime="2017-03-23T06:40:09.000Z" itemprop="datePublished">2017-03-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/22/lnmp下部署thinkphp5项目.html">lnmp下部署thinkphp5项目</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="lnmp环境下部署thinkphp5-项目遇到的问题"><a href="#lnmp环境下部署thinkphp5-项目遇到的问题" class="headerlink" title="lnmp环境下部署thinkphp5 项目遇到的问题"></a>lnmp环境下部署thinkphp5 项目遇到的问题</h2><h3 id="1、"><a href="#1、" class="headerlink" title="1、"></a>1、</h3><h4 id="2017-03-19-23-58-11-error-50459-0-213-FastCGI-sent-in-stderr-“PHP-message-PHP-Warning-require-open-basedir-restriction-in-effect-File-mnt-hgfs-www-imiaomiao-github-io-project-accounts-thinkphp-start-php-is-not-within-the-allowed-path-s-mnt-hgfs-www-imiaomiao-github-io-project-accounts-public-tmp-proc-in-mnt-hgfs-www-imiaomiao-github-io-project-accounts-public-index-php-on-line-17"><a href="#2017-03-19-23-58-11-error-50459-0-213-FastCGI-sent-in-stderr-“PHP-message-PHP-Warning-require-open-basedir-restriction-in-effect-File-mnt-hgfs-www-imiaomiao-github-io-project-accounts-thinkphp-start-php-is-not-within-the-allowed-path-s-mnt-hgfs-www-imiaomiao-github-io-project-accounts-public-tmp-proc-in-mnt-hgfs-www-imiaomiao-github-io-project-accounts-public-index-php-on-line-17" class="headerlink" title="2017/03/19 23:58:11 [error] 50459#0: *213 FastCGI sent in stderr: “PHP message: PHP Warning:  require(): open_basedir restriction in effect. File(/mnt/hgfs/www/imiaomiao.github.io/project/accounts/thinkphp/start.php) is not within the allowed path(s): (/mnt/hgfs/www/imiaomiao.github.io/project/accounts/public:/tmp/:/proc/) in /mnt/hgfs/www/imiaomiao.github.io/project/accounts/public/index.php on line 17"></a>2017/03/19 23:58:11 [error] 50459#0: *213 FastCGI sent in stderr: “PHP message: PHP Warning:  require(): open_basedir restriction in effect. File(/mnt/hgfs/www/imiaomiao.github.io/project/accounts/thinkphp/start.php) is not within the allowed path(s): (/mnt/hgfs/www/imiaomiao.github.io/project/accounts/public:/tmp/:/proc/) in /mnt/hgfs/www/imiaomiao.github.io/project/accounts/public/index.php on line 17</h4><h4 id="PHP-message-PHP-Warning-require-mnt-hgfs-www-imiaomiao-github-io-project-accounts-thinkphp-start-php-failed-to-open-stream-Operation-not-permitted-in-mnt-hgfs-www-imiaomiao-github-io-project-accounts-public-index-php-on-line-17"><a href="#PHP-message-PHP-Warning-require-mnt-hgfs-www-imiaomiao-github-io-project-accounts-thinkphp-start-php-failed-to-open-stream-Operation-not-permitted-in-mnt-hgfs-www-imiaomiao-github-io-project-accounts-public-index-php-on-line-17" class="headerlink" title="PHP message: PHP Warning:  require(/mnt/hgfs/www/imiaomiao.github.io/project/accounts/thinkphp/start.php): failed to open stream: Operation not permitted in /mnt/hgfs/www/imiaomiao.github.io/project/accounts/public/index.php on line 17"></a>PHP message: PHP Warning:  require(/mnt/hgfs/www/imiaomiao.github.io/project/accounts/thinkphp/start.php): failed to open stream: Operation not permitted in /mnt/hgfs/www/imiaomiao.github.io/project/accounts/public/index.php on line 17</h4><h3 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h3><h4 id="在nginx-conf文件中增加，设置目录"><a href="#在nginx-conf文件中增加，设置目录" class="headerlink" title="在nginx.conf文件中增加，设置目录"></a>在nginx.conf文件中增加，设置目录</h4><h4 id="fastcgi-param-PHP-VALUE-“open-basedir-mnt-hgfs-www-imiaomiao-github-io-project-accounts-tmp-proc-“"><a href="#fastcgi-param-PHP-VALUE-“open-basedir-mnt-hgfs-www-imiaomiao-github-io-project-accounts-tmp-proc-“" class="headerlink" title="fastcgi_param  PHP_VALUE  “open_basedir=/mnt/hgfs/www/imiaomiao.github.io/project/accounts/:/tmp/:/proc/“;"></a>fastcgi_param  PHP_VALUE  “open_basedir=/mnt/hgfs/www/imiaomiao.github.io/project/accounts/:/tmp/:/proc/“;</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://github.ouqunfu.com/2017/03/22/lnmp下部署thinkphp5项目.html" data-id="cj0nmxcsv0003kipvk9xtwiox" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-mirrors" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/22/mirrors.html" class="article-date">
+  <time datetime="2017-03-23T06:40:09.000Z" itemprop="datePublished">2017-03-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/22/mirrors.html">国内开源镜像mirrors</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>国内开源镜像 </p>
+<p><a href="http://ju.outofmemory.cn/entry/77706" target="_blank" rel="external">centos 6.5 搭建lnmp环境</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://github.ouqunfu.com/2017/03/22/mirrors.html" data-id="cj0nmxcsx0004kipvqtlqlzs8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-使用thinkphp5开发项目" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/22/使用thinkphp5开发项目.html" class="article-date">
+  <time datetime="2017-03-23T06:40:09.000Z" itemprop="datePublished">2017-03-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/22/使用thinkphp5开发项目.html">使用thinkphp5开发项目</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="LNMP下使用Thinkphp5框架开发项目"><a href="#LNMP下使用Thinkphp5框架开发项目" class="headerlink" title="LNMP下使用Thinkphp5框架开发项目"></a>LNMP下使用Thinkphp5框架开发项目</h3><h4 id="都说tp5与之前版本大变样了，使用起来跟3-x版本区别也是很大的，简单的，目录结构就不一样了，数据库查询原来的M函数调用，改用db函数等等。那么使用框架也要重新学习"><a href="#都说tp5与之前版本大变样了，使用起来跟3-x版本区别也是很大的，简单的，目录结构就不一样了，数据库查询原来的M函数调用，改用db函数等等。那么使用框架也要重新学习" class="headerlink" title="都说tp5与之前版本大变样了，使用起来跟3.x版本区别也是很大的，简单的，目录结构就不一样了，数据库查询原来的M函数调用，改用db函数等等。那么使用框架也要重新学习"></a>都说tp5与之前版本大变样了，使用起来跟3.x版本区别也是很大的，简单的，目录结构就不一样了，数据库查询原来的M函数调用，改用db函数等等。那么使用框架也要重新学习</h4><h4 id="按照以往习惯，使用一个框架，那么最好的方式就是用它来开发项目，这样上手是最快的"><a href="#按照以往习惯，使用一个框架，那么最好的方式就是用它来开发项目，这样上手是最快的" class="headerlink" title="按照以往习惯，使用一个框架，那么最好的方式就是用它来开发项目，这样上手是最快的"></a>按照以往习惯，使用一个框架，那么最好的方式就是用它来开发项目，这样上手是最快的</h4><h3 id="首先肯定是看框架开发手册，接着按照目录结构搭建自己的项目，自己动手把基本的curd写写，模板渲染，表单提交，页面跳转，控制器跳转，模板标签使用等等，这些内容熟悉了，对于项目开发来说基本够用了。"><a href="#首先肯定是看框架开发手册，接着按照目录结构搭建自己的项目，自己动手把基本的curd写写，模板渲染，表单提交，页面跳转，控制器跳转，模板标签使用等等，这些内容熟悉了，对于项目开发来说基本够用了。" class="headerlink" title="首先肯定是看框架开发手册，接着按照目录结构搭建自己的项目，自己动手把基本的curd写写，模板渲染，表单提交，页面跳转，控制器跳转，模板标签使用等等，这些内容熟悉了，对于项目开发来说基本够用了。"></a>首先肯定是看框架开发手册，接着按照目录结构搭建自己的项目，自己动手把基本的curd写写，模板渲染，表单提交，页面跳转，控制器跳转，模板标签使用等等，这些内容熟悉了，对于项目开发来说基本够用了。</h3><h3 id="1、-基本的curd"><a href="#1、-基本的curd" class="headerlink" title="1、 基本的curd"></a>1、 基本的curd</h3><h4 id="这里偷懒，就不新建模块了，直接在框架自带默认的Index模板写增删改查方法-代码如下："><a href="#这里偷懒，就不新建模块了，直接在框架自带默认的Index模板写增删改查方法-代码如下：" class="headerlink" title="这里偷懒，就不新建模块了，直接在框架自带默认的Index模板写增删改查方法,代码如下："></a>这里偷懒，就不新建模块了，直接在框架自带默认的Index模板写增删改查方法,代码如下：</h4><pre><code>&lt;?php
+/**
+* 测试相关
+*/
+namespace app\index\controller;
+use think\Db;
+use think\Request;
+use think\Session;
+
+class Index extends \think\Controller
+{
+    public function __construct(){
+        parent::__construct();
+    }
+
+    public function index()
+    {
+        return &apos;&lt;style type=&quot;text/css&quot;&gt;*{ padding: 0; margin: 0; } .think_default_text{ padding: 4px 48px;} a{color:#2E5CD5;cursor: pointer;text-decoration: none} a:hover{text-decoration:underline; } body{ background: #fff; font-family: &quot;Century Gothic&quot;,&quot;Microsoft yahei&quot;; color: #333;font-size:18px} h1{ font-size: 100px; font-weight: normal; margin-bottom: 12px; } p{ line-height: 1.6em; font-size: 42px }&lt;/style&gt;&lt;div style=&quot;padding: 24px 48px;&quot;&gt; &lt;h1&gt;:)&lt;/h1&gt;&lt;p&gt; ThinkPHP V5&lt;br/&gt;&lt;span style=&quot;font-size:30px&quot;&gt;十年磨一剑 - 为API开发设计的高性能框架&lt;/span&gt;&lt;/p&gt;&lt;span style=&quot;font-size:22px;&quot;&gt;[ V5.0 版本由 &lt;a href=&quot;http://www.qiniu.com&quot; target=&quot;qiniu&quot;&gt;七牛云&lt;/a&gt; 独家赞助发布 ]&lt;/span&gt;&lt;/div&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;http://tajs.qq.com/stats?sId=9347272&quot; charset=&quot;UTF-8&quot;&gt;&lt;/script&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;http://ad.topthink.com/Public/static/client.js&quot;&gt;&lt;/script&gt;&lt;thinkad id=&quot;ad_bd568ce7058a1091&quot;&gt;&lt;/thinkad&gt;&apos;;
+    }
+
+    /**-------------tp5增删改查示例代码-------------------**/
+
+    //增加
+    public function add(){
+
+        $data[&apos;username&apos;] = &apos;admin&apos;;
+        $data[&apos;password&apos;] = &apos;admin&apos;;
+        $data[&apos;create_time&apos;] = md5(&apos;123456&apos;);
+        db(&apos;user&apos;)-&gt;insert($data);
+
+    }
+
+    //查询
+    public function select(){
+
+        $user_info = db(&apos;user&apos;)-&gt;field(&quot;*&quot;)-&gt;where(&apos;id&apos;,2)-&gt;find();
+        dump($user_info);
+    }
+
+    //修改
+    public function update(){
+
+        $data[&apos;password&apos;] = md5(md5(&apos;123456&apos;).config(&apos;encryption_factor_str&apos;));
+        $data[&apos;create_time&apos;] = time();
+        $res = db(&apos;user&apos;)-&gt;where(&apos;id&apos;,2)-&gt;update($data);
+        dump($res);
+    }
+
+    //删除
+    public function delete(){
+
+        $res= db(&apos;user&apos;)-&gt;where(&apos;id&apos;,2)-&gt;delete();
+        dump($res);
+    }
+
+    //获取配置
+    public function getConfig(){
+        //所有配置
+        config();
+        //加密因子
+        dump(config(&apos;encryption_factor_str&apos;)); 
+    }
+
+
+    //页面
+    public function page(){
+
+        return $this-&gt;fetch(&apos;page&apos;);
+    }
+
+    //页面请求处理
+    public function doRequest(){
+
+        //$request = Request::instance();
+        //使用助手函数
+        $request = request();
+        echo &quot;当前模块名称是&quot; . $request-&gt;module();
+        echo &quot;当前控制器名称是&quot; . $request-&gt;controller();
+        echo &quot;当前操作名称是&quot; . $request-&gt;action();
+
+        // 获取当前请求的所有变量（经过过滤）
+        $input = $request-&gt;param();
+
+        dump($input);
+        dump(input());
+        echo $input[&apos;param3&apos;];
+        echo input(&apos;param1&apos;);
+    }
+
+    //session 和 cache 处理
+    public function sesseionAndCache(){
+
+        //设置
+        Session::set(&apos;name&apos;,&apos;thinkphp&apos;);
+        //获取
+        echo Session::get(&apos;name&apos;);
+        //清空
+        Session::clear();
+        echo &apos;值是否清除==&apos;.Session::get(&apos;name&apos;);
+    }
+}
+</code></pre><h4 id="这里需要注意的是使用db，要使用命名空间导入db类，增加”use-think-Db-”这行代码-还有请求处理同样如此，增加”use-think-Request-”。"><a href="#这里需要注意的是使用db，要使用命名空间导入db类，增加”use-think-Db-”这行代码-还有请求处理同样如此，增加”use-think-Request-”。" class="headerlink" title="这里需要注意的是使用db，要使用命名空间导入db类，增加”use think\Db;”这行代码,还有请求处理同样如此，增加”use think\Request;”。"></a>这里需要注意的是使用db，要使用命名空间导入db类，增加”use think\Db;”这行代码,还有请求处理同样如此，增加”use think\Request;”。</h4><h4 id="另外这里还增加session操作的方法，如果项目涉及登录功能的话，是要用到的。"><a href="#另外这里还增加session操作的方法，如果项目涉及登录功能的话，是要用到的。" class="headerlink" title="另外这里还增加session操作的方法，如果项目涉及登录功能的话，是要用到的。"></a>另外这里还增加session操作的方法，如果项目涉及登录功能的话，是要用到的。</h4><h4 id="输入变量过滤可以在config-php文件中配置，也可以在接收时再多虑。"><a href="#输入变量过滤可以在config-php文件中配置，也可以在接收时再多虑。" class="headerlink" title="输入变量过滤可以在config.php文件中配置，也可以在接收时再多虑。"></a>输入变量过滤可以在config.php文件中配置，也可以在接收时再多虑。</h4><h4 id="项目源码托管在github-简易记账系统"><a href="#项目源码托管在github-简易记账系统" class="headerlink" title="项目源码托管在github 简易记账系统"></a>项目源码托管在github <a href="https://github.com/ouqunfu/accounts" target="_blank" rel="external">简易记账系统</a></h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://github.ouqunfu.com/2017/03/22/使用thinkphp5开发项目.html" data-id="cj0nmxct00005kipvaq9y0ape" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-搭建LNMP环境" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/22/搭建LNMP环境.html" class="article-date">
+  <time datetime="2017-03-23T06:40:09.000Z" itemprop="datePublished">2017-03-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/22/搭建LNMP环境.html">搭建LNMP环境</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>LNMP代表的就是：Linux系统下Nginx+MySQL+PHP这种网站服务器架构。<br>Linux是一类Unix计算机操作系统的统称，是目前最流行的免费操作系统。代表版本有：debian、centos、ubuntu、fedora、gentoo等。<br>Nginx是一个高性能的HTTP和反向代理服务器，也是一个IMAP/POP3/SMTP代理服务器。<br>Mysql是一个小型关系型数据库管理系统。<br>PHP是一种在服务器端执行的嵌入HTML文档的脚本语言。<br>这四种软件均为免费开源软件，组合到一起，成为一个免费、高效、扩展性强的网站服务系统。</p>
+<h2 id="1、centos-6-5-X86-64-VMware下编译安装搭建lnmp，架构web环境"><a href="#1、centos-6-5-X86-64-VMware下编译安装搭建lnmp，架构web环境" class="headerlink" title="1、centos 6.5 X86_64 VMware下编译安装搭建lnmp，架构web环境"></a>1、centos 6.5 X86_64 VMware下编译安装搭建lnmp，架构web环境</h2><p>&emsp;建议安装顺序：</p>
+<p>&emsp;MySQL——-》》编译PHP—-》》编译nginx</p>
+<h3 id="（1）检查编译安装环境"><a href="#（1）检查编译安装环境" class="headerlink" title="（1）检查编译安装环境"></a>（1）检查编译安装环境</h3><h4 id="emsp-查看httpd、mysql、php是否安装"><a href="#emsp-查看httpd、mysql、php是否安装" class="headerlink" title="&emsp;#查看httpd、mysql、php是否安装"></a>&emsp;#查看httpd、mysql、php是否安装</h4><h4 id="emsp-root-localhost-rpm-q-httpd-mysql-php"><a href="#emsp-root-localhost-rpm-q-httpd-mysql-php" class="headerlink" title="&emsp;[root@localhost ~]#rpm -q httpd mysql php"></a>&emsp;[root@localhost ~]#rpm -q httpd mysql php</h4><h4 id="emsp-如果已安装则卸载"><a href="#emsp-如果已安装则卸载" class="headerlink" title="&emsp;#如果已安装则卸载:"></a>&emsp;#如果已安装则卸载:</h4><h4 id="emsp-root-localhost-rpm-e-httpd-–nodeps"><a href="#emsp-root-localhost-rpm-e-httpd-–nodeps" class="headerlink" title="&emsp;[root@localhost ~]#rpm -e httpd –nodeps"></a>&emsp;[root@localhost ~]#rpm -e httpd –nodeps</h4><h4 id="emsp-root-localhost-rpm-e-mysql-–nodeps"><a href="#emsp-root-localhost-rpm-e-mysql-–nodeps" class="headerlink" title="&emsp;[root@localhost ~]#rpm -e mysql –nodeps"></a>&emsp;[root@localhost ~]#rpm -e mysql –nodeps</h4><h4 id="emsp-root-localhost-rpm-e-php-–nodeps"><a href="#emsp-root-localhost-rpm-e-php-–nodeps" class="headerlink" title="&emsp;[root@localhost ~]#rpm -e php –nodeps"></a>&emsp;[root@localhost ~]#rpm -e php –nodeps</h4><h4 id="emsp-删除相关文件"><a href="#emsp-删除相关文件" class="headerlink" title="&emsp;#删除相关文件"></a>&emsp;#删除相关文件</h4><h4 id="emsp-find-name-php-mysql-nginx"><a href="#emsp-find-name-php-mysql-nginx" class="headerlink" title="&emsp;find / -name php mysql nginx"></a>&emsp;find / -name php mysql nginx</h4><h4 id="emsp-rm-rf"><a href="#emsp-rm-rf" class="headerlink" title="&emsp;rm -rf *"></a>&emsp;rm -rf <em>*</em></h4><h3 id="（2）安装解决依赖关系"><a href="#（2）安装解决依赖关系" class="headerlink" title="（2）安装解决依赖关系"></a>（2）安装解决依赖关系</h3><pre><code>yum install -y wget gcc gcc-c++ autoconf libjpeg libjpeg-devel perl perl* perl-CPAN libpng libpng-devel freetype freetype-devel libxml2 libxml2-devel zlib zlib-devel glibc glibc-devel glib2 glib2-devel bzip2 bzip2-devel ncurses ncurses-devel curl curl-devel e2fsprogs e2fsprogs-devel krb5 krb5-devel libidn libidn-devel openssl openssl-devel openldap openldap-devel nss_ldap openldap-clients openldap-servers png jpeg autoconf gcc cmake make gcc-c++ gcc ladp ldap* ncurses ncurses-devel zlib zlib-devel zlib-static pcre pcre-devel pcre-static openssl openssl-devel perl libtoolt openldap-devel libxml2-devel ntpdate cmake gd* gd2 ImageMagick-devel jpeg jpeg* pcre-dev* fontconfig libpng libxml2 zip unzip gzip
+</code></pre><p>yum install -y wget gcc gcc-c++ autoconf libjpeg libjpeg-devel perl perl* perl-CPAN libpng libpng-devel freetype </p>
+<p>freetype-devel libxml2 libxml2-devel zlib zlib-devel glibc glibc-devel glib2 glib2-devel bzip2 bzip2-devel </p>
+<p>ncurses ncurses-devel curl curl-devel e2fsprogs e2fsprogs-devel krb5 krb5-devel libidn libidn-devel openssl </p>
+<p>openssl-devel openldap openldap-devel nss_ldap openldap-clients openldap-servers png jpeg autoconf gcc cmake </p>
+<p>make gcc-c++ gcc ladp ldap* ncurses ncurses-devel zlib zlib-devel zlib-static pcre pcre-devel pcre-static </p>
+<p>openssl openssl-devel perl libtoolt openldap-devel libxml2-devel ntpdate cmake gd* gd2 ImageMagick-devel jpeg </p>
+<p>jpeg<em> pcre-dev</em> fontconfig libpng libxml2 zip unzip gzip</p>
+<h3 id="（3）安装mysql-5-5-53"><a href="#（3）安装mysql-5-5-53" class="headerlink" title="（3）安装mysql-5.5.53"></a>（3）安装mysql-5.5.53</h3><p>下载mysql-5.5.53.tar.gz</p>
+<p>groupadd mysql</p>
+<p>useradd mysql -g mysql</p>
+<p>tar -zxvf mysql-5.5.30.tar.gz</p>
+<p>cd mysql-5.5.30</p>
+<p>cmake -DCMAKE_INSTALL_PREFIX=/usr/local/mysql \</p>
+<p>-DMYSQL_UNIX_ADDR=/tmp/mysql.sock \</p>
+<p>-DEXTRA_CHARSETS=all \</p>
+<p>-DDEFAULT_CHARSET=utf8 \</p>
+<p>-DDEFAULT_COLLATION=utf8_general_ci \</p>
+<p>-DWITH_EXTRA_CHARSETS:STRING=utf8,gbk \</p>
+<p>-DWITH_INNOBASE_STORAGE_ENGINE=1 \</p>
+<p>-DWITH_READLINE=1 \</p>
+<p>-DENABLED_LOCAL_INFILE=1 \</p>
+<p>-DMYSQL_DATADIR=/data/mysql/ \</p>
+<p>-DMYSQL_USER=mysql \</p>
+<p>-DMYSQL_TCP_PORT=3306    </p>
+<pre><code>cmake -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DMYSQL_UNIX_ADDR=/tmp/mysql.sock -DEXTRA_CHARSETS=all -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci -DWITH_EXTRA_CHARSETS:STRING=utf8,gbk -DWITH_INNOBASE_STORAGE_ENGINE=1 -DWITH_READLINE=1 -DENABLED_LOCAL_INFILE=1 -DMYSQL_DATADIR=/data/mysql/ -DMYSQL_USER=mysql -DMYSQL_TCP_PORT=3306
+</code></pre><p>make &amp;&amp; make install</p>
+<p>mkdir -p /data/mysql</p>
+<p>chown mysql.mysql -R /data/mysql</p>
+<p>mv /etc/my.cnf /etc/my.cnf-old</p>
+<p>cp support-files/my-medium.cnf /etc/my.cnf</p>
+<p>chmod 755 scripts/mysql_install_db</p>
+<p>scripts/mysql_install_db  –user=mysql  –basedir=/usr/local/mysql –datadir=/data/mysql/</p>
+<p>cp support-files/mysql.server /etc/init.d/mysqld</p>
+<p>chmod 755 /etc/init.d/mysqld</p>
+<p>chkconfig mysqld on</p>
+<p>service mysqld start</p>
+<p>设置mysql的root密码为123456</p>
+<p>/usr/local/mysql/bin/mysqladmin -u root password ‘123456’</p>
+<h3 id="（4）安装php的扩展库：libiconv"><a href="#（4）安装php的扩展库：libiconv" class="headerlink" title="（4）安装php的扩展库：libiconv"></a>（4）安装php的扩展库：libiconv</h3><p>tar zxvf libiconv-1.13.tar.gz</p>
+<p>cd libiconv-1.13/</p>
+<p>./configure –prefix=/usr/local</p>
+<p>make &amp;&amp; make install</p>
+<h3 id="（5）安装php扩展库：libmcrypt"><a href="#（5）安装php扩展库：libmcrypt" class="headerlink" title="（5）安装php扩展库：libmcrypt"></a>（5）安装php扩展库：libmcrypt</h3><p>tar zxvf libmcrypt-2.5.8.tar.gz</p>
+<p>cd libmcrypt-2.5.8/</p>
+<p>./configure</p>
+<p>make &amp;&amp; make install</p>
+<p>/sbin/ldconfig</p>
+<h4 id="注：这里不要退出去了。"><a href="#注：这里不要退出去了。" class="headerlink" title="注：这里不要退出去了。"></a>注：这里不要退出去了。</h4><p>cd libltdl/</p>
+<p>./configure –enable-ltdl-install</p>
+<p>make &amp;&amp; make install</p>
+<h3 id="（6）-安装php扩展库：mhash"><a href="#（6）-安装php扩展库：mhash" class="headerlink" title="（6） 安装php扩展库：mhash"></a>（6） 安装php扩展库：mhash</h3><p>tar zxvf mhash-0.9.9.9.tar.gz</p>
+<p>cd mhash-0.9.9.9/</p>
+<p>./configure</p>
+<p>make &amp;&amp; make install</p>
+<h3 id="（7）-做库的软连接："><a href="#（7）-做库的软连接：" class="headerlink" title="（7） 做库的软连接："></a>（7） 做库的软连接：</h3><p>ln -s /usr/local/lib/libmcrypt.la /usr/lib/libmcrypt.la</p>
+<p>ln -s /usr/local/lib/libmcrypt.so /usr/lib/libmcrypt.so</p>
+<p>ln -s /usr/local/lib/libmcrypt.so.4 /usr/lib/libmcrypt.so.4</p>
+<p>ln -s /usr/local/lib/libmcrypt.so.4.4.8 /usr/lib/libmcrypt.so.4.4.8</p>
+<p>ln -s /usr/local/lib/libmhash.a /usr/lib/libmhash.a</p>
+<p>ln -s /usr/local/lib/libmhash.la /usr/lib/libmhash.la</p>
+<p>ln -s /usr/local/lib/libmhash.so /usr/lib/libmhash.so</p>
+<p>ln -s /usr/local/lib/libmhash.so.2 /usr/lib/libmhash.so.2</p>
+<p>ln -s /usr/local/lib/libmhash.so.2.0.1 /usr/lib/libmhash.so.2.0.1</p>
+<p>ln -s /usr/lib64/libldap* /usr/lib/</p>
+<h3 id="8-安装php扩展包：mcrypt"><a href="#8-安装php扩展包：mcrypt" class="headerlink" title="(8) 安装php扩展包：mcrypt"></a>(8) 安装php扩展包：mcrypt</h3><p>tar zxvf mcrypt-2.6.8.tar.gz</p>
+<p>cd mcrypt-2.6.8/</p>
+<p>/sbin/ldconfig</p>
+<p>./configure</p>
+<p>make &amp;&amp; make install</p>
+<h3 id="9-安装php-5-4-21："><a href="#9-安装php-5-4-21：" class="headerlink" title="(9) 安装php-5.4.21："></a>(9) 安装php-5.4.21：</h3><p>tar -zxvf php-5.4.21.tar.gz</p>
+<p>cd php-5.4.21</p>
+<p> ./configure –prefix=/usr/local/php –with-config-file-path=/usr/local/php/etc –with-mysql=/usr/local/mysql </p>
+<p>–with-mysqli=/usr/local/mysql/bin/mysql_config –with-iconv-dir=/usr/local –with-freetype-dir –with-jpeg-dir </p>
+<p>–with-png-dir –with-zlib –with-gd –enable-gd-native-ttf –with-libxml-dir=/usr –enable-xml –disable-rpath </p>
+<p>–enable-discard-path –enable-safe-mode –enable-bcmath –enable-shmop –enable-sysvsem –enable-inline-</p>
+<p>optimization –with-curl –with-curlwrappers –enable-mbregex –enable-fastcgi –enable-fpm –enable-force-cgi-</p>
+<p>redirect –enable-mbstring –with-mcrypt –with-openssl –with-mhash –enable-pcntl –enable-sockets –with-ldap </p>
+<p>–with-ldap-sasl –with-xmlrpc –enable-zip –enable-soap –without-pear</p>
+<hr>
+<p>编译报错：<br>configure: error: Don’t know how to define struct flock on this system, set –enable-opcache=no</p>
+<p>解决： 安装 yum groupinstall “Development Tools” </p>
+<p>重新编译</p>
+<p>configure: WARNING: unrecognized options: –enable-discard-path, –enable-safe-mode, –with-curlwrappers, –enable-fastcgi, –enable-force-cgi-redirect</p>
+<p>如果加的参数有不支持的，提示比如：configure: WARNING: unrecognized options: –enable-discard-path, –enable-safe-mode, –enable-fastcgi, –enable-force-cgi-redirect</p>
+<p>说明上述这些参数废弃了。</p>
+<hr>
+<p>ln -s /usr/local/mysql/lib/libmysqlclient.so.18 /usr/lib64/</p>
+<p>make ZEND_EXTRA_LIBS=’-liconv’</p>
+<p>make install</p>
+<p>cp -f php.ini-production /usr/local/php/etc/php.ini</p>
+<p>ln -s /usr/local/php/etc/php.ini /usr/local/php/php.ini</p>
+<p>cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf</p>
+<h3 id="10-安装php扩展库：memcache"><a href="#10-安装php扩展库：memcache" class="headerlink" title="(10) 安装php扩展库：memcache"></a>(10) 安装php扩展库：memcache</h3><p>tar zxvf memcache-2.2.5.tgz</p>
+<p>cd memcache-2.2.5/</p>
+<p>/usr/local/php/bin/phpize</p>
+<p>./configure –with-php-config=/usr/local/php/bin/php-config</p>
+<p>make &amp;&amp; make install</p>
+<h3 id="11-安装php加速：eaccelerator"><a href="#11-安装php加速：eaccelerator" class="headerlink" title="(11) 安装php加速：eaccelerator"></a>(11) 安装php加速：eaccelerator</h3><p>tar -zxvf eaccelerator-eaccelerator-42067ac.tar.gz</p>
+<p>cd eaccelerator-eaccelerator-42067ac</p>
+<p>/usr/local/php/bin/phpize</p>
+<p>./configure –enable-eaccelerator=shared –with-php-config=/usr/local/php/bin/php-config</p>
+<p>make &amp;&amp; make install</p>
+<p>注：这里安装使用的是php5.6，eaccelerator并不兼容，则略过不安装</p>
+<h3 id="（12）-修改php-ini增加memcache-ea等软件信息"><a href="#（12）-修改php-ini增加memcache-ea等软件信息" class="headerlink" title="（12） 修改php.ini增加memcache,ea等软件信息"></a>（12） 修改php.ini增加memcache,ea等软件信息</h3><p>添加memcache库的位置：</p>
+<p>vim /usr/local/php/php.ini</p>
+<p>;extension_dir = “/usr/local/php/lib/php/extensions/no-debug-non-zts-20100525”<br>(该目录下为安装的扩展.so文件,单个加载.so，否则pdo模板无法加载)</p>
+<p>extension = “memcache.so”</p>
+<p>extension = “pdo_mysql.so”</p>
+<p>extension = “imagick.so”</p>
+<h3 id="（13）安装php扩展库-PDO-MYSQL"><a href="#（13）安装php扩展库-PDO-MYSQL" class="headerlink" title="（13）安装php扩展库:PDO_MYSQL"></a>（13）安装php扩展库:PDO_MYSQL</h3><p>tar zxvf PDO_MYSQL-1.0.2.tgz</p>
+<p>cd PDO_MYSQL-1.0.2/</p>
+<p>/usr/local/php/bin/phpize</p>
+<p>./configure –with-php-config=/usr/local/php/bin/php-config –with-pdo-mysql=/usr/local/mysql</p>
+<p>ln -s /usr/local/mysql/include/* /usr/local/include/</p>
+<p>make &amp;&amp; make install</p>
+<h3 id="（14）安装ImageMagick服务"><a href="#（14）安装ImageMagick服务" class="headerlink" title="（14）安装ImageMagick服务"></a>（14）安装ImageMagick服务</h3><p>tar zxvf ImageMagick.tar.gz</p>
+<p>cd ImageMagick-6.5.1-2/</p>
+<p>./configure &amp;&amp; make &amp;&amp; make install</p>
+<h3 id="（15）安装php扩展库：imagick"><a href="#（15）安装php扩展库：imagick" class="headerlink" title="（15）安装php扩展库：imagick"></a>（15）安装php扩展库：imagick</h3><p>tar zxvf imagick-3.1.2.tgz</p>
+<p>cd imagick-3.1.2/</p>
+<p>/usr/local/php/bin/phpize</p>
+<p>ln -s /usr/local/include/ImageMagick-6 /usr/local/include/ImageMagick</p>
+<p>./configure –with-php-config=/usr/local/php/bin/php-config</p>
+<p>make &amp;&amp; make install</p>
+<h3 id="（16）添加WWW用户，为系统运行nginx专用用户："><a href="#（16）添加WWW用户，为系统运行nginx专用用户：" class="headerlink" title="（16）添加WWW用户，为系统运行nginx专用用户："></a>（16）添加WWW用户，为系统运行nginx专用用户：</h3><p>/usr/sbin/groupadd www</p>
+<p>/usr/sbin/useradd -g www www</p>
+<p>mkdir -p /var/log/nginx</p>
+<p>chmod +w /var/log/nginx</p>
+<p>chown -R www:www /var/log/nginx</p>
+<p>mkdir -p /data0/www</p>
+<p>chmod +w /data0/www</p>
+<p>chown -R www:www /data0/www</p>
+<h3 id="（17）修改php-fpm-conf的配置："><a href="#（17）修改php-fpm-conf的配置：" class="headerlink" title="（17）修改php-fpm.conf的配置："></a>（17）修改php-fpm.conf的配置：</h3><p>vim /usr/local/php/etc/php-fpm.conf</p>
+<h4 id="去掉-更改-配置文件中的"><a href="#去掉-更改-配置文件中的" class="headerlink" title="去掉/更改 配置文件中的;"></a>去掉/更改 配置文件中的;</h4><p>pm.max_children = 64</p>
+<p>pm.start_servers = 20</p>
+<p>pm.min_spare_servers = 5</p>
+<p>pm.max_spare_servers = 35</p>
+<p>pm.max_requests = 1024</p>
+<p>user = www</p>
+<p>group = www</p>
+<h4 id="检查语法是否正确"><a href="#检查语法是否正确" class="headerlink" title="检查语法是否正确"></a>检查语法是否正确</h4><p>/usr/local/php/sbin/php-fpm -t</p>
+<p>NOTICE: configuration file /usr/local/php/etc/php-fpm.conf test is successful</p>
+<p>看到上面的信息 证明php配置文件正常，可以启动了。</p>
+<h3 id="（18）-添加环境变量："><a href="#（18）-添加环境变量：" class="headerlink" title="（18） 添加环境变量："></a>（18） 添加环境变量：</h3><p>echo “export PATH=\$PATH:/usr/local/php/sbin/“ &gt;&gt;/etc/profile</p>
+<p>echo “export PATH=\$PATH:/usr/local/php/bin/“ &gt;&gt;/etc/profile</p>
+<p>. /etc/profile</p>
+<pre><code>注意：这里最后一步报错-bash: ./etc/profile: Permission denied
+
+原因是指令 . /etc/profile 点和斜杠之间应该是有空格的，这里漏掉了
+</code></pre><h3 id="（19）安装nginx的-pcre"><a href="#（19）安装nginx的-pcre" class="headerlink" title="（19）安装nginx的 pcre"></a>（19）安装nginx的 pcre</h3><p>卸载PCRE</p>
+<p>rpm -qa pcre</p>
+<p>rpm -e –nodeps pcre</p>
+<p>tar -zxvf pcre2-10.20.tar.gz</p>
+<p>cd pcre2-10.20 &amp;&amp; ./configure –prefix=/usr/local/pcre &amp;&amp; make &amp;&amp; make install</p>
+<pre><code>注意：此处configure出错
+grep: error while loading shared libraries: libpcre.so.0: cannot open shared object file: No such file or directory
+原因是libpcre.so.0文件没有了
+
+解决方法：
+
+改用yum源安装 yum install pcre
+</code></pre><h3 id="（20）编译安装-nginx"><a href="#（20）编译安装-nginx" class="headerlink" title="（20）编译安装 nginx"></a>（20）编译安装 nginx</h3><p>tar -zxvf nginx-1.10.1.tar.gz</p>
+<p>cd nginx-1.10.1/</p>
+<p>./configure –user=www –group=www –prefix=/usr/local/nginx –sbin-path=/usr/local/nginx/sbin/nginx –conf-</p>
+<p>path=/usr/local/nginx/conf/nginx.conf –with-http_stub_status_module –with-http_ssl_module –with-</p>
+<p>pcre=/usr/local/pcre –lock-path=/var/run/nginx.lock –pid-path=/var/run/nginx.pid</p>
+<p>make &amp;&amp; make install</p>
+<pre><code>注意：make 报错
+make -f objs/Makefile
+make[1]: Entering directory `/home/ferry/www/service-file/nginx-1.10.1&apos;
+cd /usr/local/pcre \
+    &amp;&amp; if [ -f Makefile ]; then make distclean; fi \
+    &amp;&amp; CC=&quot;cc&quot; CFLAGS=&quot;-O2 -fomit-frame-pointer -pipe &quot; \
+    ./configure --disable-shared 
+/bin/sh: line 2: ./configure: No such file or directory
+make[1]: *** [/usr/local/pcre/Makefile] Error 127
+make[1]: Leaving directory `/home/ferry/www/service-file/nginx-1.10.1&apos;
+make: *** [build] Error 2
+
+解决：--with-pcre=DIR 是指 pcre 的源码目录，而不是 pcre 的安装目录
+所以修改--with-pcre=/usr/local/pcre 为 --with-pcre=/home/ferry/www/service-file/pcre2-10.20
+
+再报错
+cc: /home/ferry/www/service-file/pcre2-10.20/.libs/libpcre.a: No such file or directory
+make[1]: *** [objs/nginx] Error 1
+make[1]: Leaving directory `/home/ferry/www/service-file/nginx-1.10.1&apos;
+make: *** [build] Error 2
+
+解决方案：
+
+mkdir -p /home/ferry/www/service-file/pcre2-10.20/.libs
+cp /usr/lib/libpcre.a /home/ferry/www/service-file/pcre2-10.20/libpcre.a
+cp /usr/lib/libpcre.a /home/ferry/www/service-file/pcre2-10.20/libpcre.la
+cp /usr/lib/libpcre.a /home/ferry/www/service-file/pcre2-10.20/.libs/libpcre.a
+cp /usr/lib/libpcre.a /home/ferry/www/service-file/pcre2-10.20/.libs/libpcre.la
+</code></pre><p>编译成功</p>
+<h3 id="（21）修改nginx配置文件"><a href="#（21）修改nginx配置文件" class="headerlink" title="（21）修改nginx配置文件"></a>（21）修改nginx配置文件</h3><p>user www;</p>
+<p>events {</p>
+<p>use epoll;</p>
+<p>worker_connections  1024;</p>
+<p>}</p>
+<pre><code>#注意 把/scripti改为$document_root$  不然就是 file not found                                                     
+</code></pre><p>location ~ .php$ {</p>
+<p>root           html;</p>
+<p>fastcgi_pass   127.0.0.1:9000;</p>
+<p>fastcgi_index  index.php;</p>
+<p>fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;</p>
+<p>include        fastcgi_params;</p>
+<p>}</p>
+<h3 id="（22）写一个php的测试文件：phpinfo"><a href="#（22）写一个php的测试文件：phpinfo" class="headerlink" title="（22）写一个php的测试文件：phpinfo"></a>（22）写一个php的测试文件：phpinfo</h3><p>cat &gt;&gt;/usr/local/nginx/html/index.php&lt;&lt;EOF</p>
+<p>&lt;?php             </p>
+<p>phpinfo();          </p>
+<p>?&gt;            </p>
+<p>EOF</p>
+<h3 id="（23）添加开机启动"><a href="#（23）添加开机启动" class="headerlink" title="（23）添加开机启动:"></a>（23）添加开机启动:</h3><p>echo “/usr/local/php/sbin/php-fpm” &gt;&gt; /etc/rc.local</p>
+<p>echo “/usr/local/nginx/sbin/nginx” &gt;&gt; /etc/rc.local</p>
+<p>echo “/etc/init.d/mysqld restart” &gt;&gt; /etc/rc.local</p>
+<h3 id="（24）启动nginx-启动php-fpm-开放防火墙iptables-80端口"><a href="#（24）启动nginx-启动php-fpm-开放防火墙iptables-80端口" class="headerlink" title="（24）启动nginx 启动php-fpm 开放防火墙iptables 80端口"></a>（24）启动nginx 启动php-fpm 开放防火墙iptables 80端口</h3><h3 id="（25）浏览器访问："><a href="#（25）浏览器访问：" class="headerlink" title="（25）浏览器访问："></a>（25）浏览器访问：</h3><p><a href="http://ip/index.php" target="_blank" rel="external">http://ip/index.php</a></p>
+<h2 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h2><h3 id="1-关于-etc-init-d"><a href="#1-关于-etc-init-d" class="headerlink" title="1.关于/etc/init.d"></a>1.关于/etc/init.d</h3><p>/etc/init.d目录包含许多系统各种服务的启动和停止脚本</p>
+<h3 id="2-关于-etc-rc-local"><a href="#2-关于-etc-rc-local" class="headerlink" title="2.关于/etc/rc.local"></a>2.关于/etc/rc.local</h3><p>该脚本是在系统初始化级别脚本运行之后再执行的，因此可以安全地在里面添加你想在系统启动之后执行的脚本。</p>
+<h3 id="参考链接-1、-centos-6-5-搭建lnmp环境"><a href="#参考链接-1、-centos-6-5-搭建lnmp环境" class="headerlink" title="参考链接 1、 centos 6.5 搭建lnmp环境"></a>参考链接 1、 <a href="http://blog.csdn.net/u010098331/article/details/50749587" target="_blank" rel="external">centos 6.5 搭建lnmp环境</a></h3><p>2 下载所有使用到的软件：（13个）</p>
+<p>wget <a href="http://ftp.gnu.org/gnu/libiclsonv/libiconv-1.13.tar.gz" target="_blank" rel="external">http://ftp.gnu.org/gnu/libiclsonv/libiconv-1.13.tar.gz</a></p>
+<p>手动下载 <a href="https://sourceforge.net/projects/mcrypt/files/Libmcrypt/2.5.8/" target="_blank" rel="external">https://sourceforge.net/projects/mcrypt/files/Libmcrypt/2.5.8/</a> </p>
+<p>wget <a href="http://jaist.dl.sourceforge.NET/project/mcrypt/MCrypt/2.6.8/mcrypt-2.6.8.tar.gz" target="_blank" rel="external">http://jaist.dl.sourceforge.NET/project/mcrypt/MCrypt/2.6.8/mcrypt-2.6.8.tar.gz</a></p>
+<p>wget <a href="http://jaist.dl.sourceforge.Net/project/mhash/mhash/0.9.9.9/mhash-0.9.9.9.tar.gz" target="_blank" rel="external">http://jaist.dl.sourceforge.Net/project/mhash/mhash/0.9.9.9/mhash-0.9.9.9.tar.gz</a></p>
+<p>wget <a href="http://vps.googlecode.com/files/memcache-2.2.5.tgz" target="_blank" rel="external">http://vps.googlecode.com/files/memcache-2.2.5.tgz</a></p>
+<p>wget <a href="http://vps.googlecode.com/files/PDO_MYSQL-1.0.2.tgz" target="_blank" rel="external">http://vps.googlecode.com/files/PDO_MYSQL-1.0.2.tgz</a></p>
+<p>wget <a href="http://pecl.php.net/get/imagick-3.1.2.tgz" target="_blank" rel="external">http://pecl.php.net/get/imagick-3.1.2.tgz</a></p>
+<p>wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.21.tar.gz</p>
+<p>wget <a href="http://netcologne.dl.sourceforge.net/project/mysql.mirror/MySQL%205.5.30/mysql-5.5.30.tar.gz（链接已失效，改为使用Sohu的镜像源）" target="_blank" rel="external">http://netcologne.dl.sourceforge.net/project/mysql.mirror/MySQL%205.5.30/mysql-5.5.30.tar.gz（链接已失效，改为使用Sohu的镜像源）</a></p>
+<p>wget <a href="http://mirror.aarnet.edu.au/pub/imagemagick/ImageMagick-6.9.8-0.tar.gz" target="_blank" rel="external">http://mirror.aarnet.edu.au/pub/imagemagick/ImageMagick-6.9.8-0.tar.gz</a></p>
+<p>wget <a href="http://pecl.php.net/get/imagick-3.1.2.tgz" target="_blank" rel="external">http://pecl.php.net/get/imagick-3.1.2.tgz</a></p>
+<p>wget <a href="http://us3.php.net/get/php-5.4.21.tar.gz/from/cn2.php.net/mirror" target="_blank" rel="external">http://us3.php.net/get/php-5.4.21.tar.gz/from/cn2.php.net/mirror</a></p>
+<p>wget <a href="http://soft.vpser.net/web/eaccelerator/eaccelerator-eaccelerator-42067ac.tar.gz" target="_blank" rel="external">http://soft.vpser.net/web/eaccelerator/eaccelerator-eaccelerator-42067ac.tar.gz</a></p>
+<p>wget <a href="http://nginx.org/download/nginx-1.4.0.tar.gz" target="_blank" rel="external">http://nginx.org/download/nginx-1.4.0.tar.gz</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://github.ouqunfu.com/2017/03/22/搭建LNMP环境.html" data-id="cj0nmxct80006kipvx3znw4ed" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-搭建Samba服务" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/22/搭建Samba服务.html" class="article-date">
+  <time datetime="2017-03-23T06:40:09.000Z" itemprop="datePublished">2017-03-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/22/搭建Samba服务.html">搭建Samba服务</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Samba是在Linux和UNIX系统上实现SMB协议的一个免费软件，由服务器及客户端程序构成。"><a href="#Samba是在Linux和UNIX系统上实现SMB协议的一个免费软件，由服务器及客户端程序构成。" class="headerlink" title="Samba是在Linux和UNIX系统上实现SMB协议的一个免费软件，由服务器及客户端程序构成。"></a>Samba是在Linux和UNIX系统上实现SMB协议的一个免费软件，由服务器及客户端程序构成。</h4><h4 id="为了实现Windows主机与Linux服务器之间的资源共享，Linux操作系统提供了Samba服务，Samba服务为两种不同的操作系统架起了一座桥梁，使Linux系统和Windows系统之间能够实现互相通信，为广泛的Linux爱好者提供了极大方便。"><a href="#为了实现Windows主机与Linux服务器之间的资源共享，Linux操作系统提供了Samba服务，Samba服务为两种不同的操作系统架起了一座桥梁，使Linux系统和Windows系统之间能够实现互相通信，为广泛的Linux爱好者提供了极大方便。" class="headerlink" title="为了实现Windows主机与Linux服务器之间的资源共享，Linux操作系统提供了Samba服务，Samba服务为两种不同的操作系统架起了一座桥梁，使Linux系统和Windows系统之间能够实现互相通信，为广泛的Linux爱好者提供了极大方便。"></a>为了实现Windows主机与Linux服务器之间的资源共享，Linux操作系统提供了Samba服务，Samba服务为两种不同的操作系统架起了一座桥梁，使Linux系统和Windows系统之间能够实现互相通信，为广泛的Linux爱好者提供了极大方便。</h4><h1 id="centos-搭建Samba服务环境"><a href="#centos-搭建Samba服务环境" class="headerlink" title="centos 搭建Samba服务环境"></a>centos 搭建Samba服务环境</h1><h2 id="1、临时关闭防火墙iptables和SELinux"><a href="#1、临时关闭防火墙iptables和SELinux" class="headerlink" title="1、临时关闭防火墙iptables和SELinux"></a>1、临时关闭防火墙iptables和SELinux</h2><h4 id="emsp-开启：-service-iptables-start"><a href="#emsp-开启：-service-iptables-start" class="headerlink" title="&emsp;    开启： service iptables start"></a>&emsp;    开启： service iptables start</h4><h4 id="emsp-关闭：-service-iptables-stop"><a href="#emsp-关闭：-service-iptables-stop" class="headerlink" title="&emsp;    关闭： service iptables stop"></a>&emsp;    关闭： service iptables stop</h4><h4 id="emsp-setenforce-1-设置SELinux-成为enforcing模式"><a href="#emsp-setenforce-1-设置SELinux-成为enforcing模式" class="headerlink" title="&emsp;    setenforce 1 设置SELinux 成为enforcing模式"></a>&emsp;    setenforce 1 设置SELinux 成为enforcing模式</h4><h4 id="emsp-setenforce-0-设置SELinux-成为permissive模式"><a href="#emsp-setenforce-0-设置SELinux-成为permissive模式" class="headerlink" title="&emsp;    setenforce 0 设置SELinux 成为permissive模式"></a>&emsp;    setenforce 0 设置SELinux 成为permissive模式</h4><h2 id="2、yum源安装Samba服务"><a href="#2、yum源安装Samba服务" class="headerlink" title="2、yum源安装Samba服务"></a>2、yum源安装Samba服务</h2><h3 id="（1）安装状况"><a href="#（1）安装状况" class="headerlink" title="（1）安装状况"></a>（1）安装状况</h3><h4 id="emsp-root-localhost-bin-rpm-qa-grep-samba"><a href="#emsp-root-localhost-bin-rpm-qa-grep-samba" class="headerlink" title="&emsp;    [root@localhost bin]# rpm -qa|grep samba"></a>&emsp;    [root@localhost bin]# rpm -qa|grep samba</h4><h4 id="emsp-samba-winbind-clients-3-6-23-36-el6-8-x86-64"><a href="#emsp-samba-winbind-clients-3-6-23-36-el6-8-x86-64" class="headerlink" title="&emsp;    samba-winbind-clients-3.6.23-36.el6_8.x86_64"></a>&emsp;    samba-winbind-clients-3.6.23-36.el6_8.x86_64</h4><h4 id="emsp-samba-client-3-6-23-36-el6-8-x86-64"><a href="#emsp-samba-client-3-6-23-36-el6-8-x86-64" class="headerlink" title="&emsp;    samba-client-3.6.23-36.el6_8.x86_64"></a>&emsp;    samba-client-3.6.23-36.el6_8.x86_64</h4><h4 id="emsp-samba-3-6-23-36-el6-8-x86-64"><a href="#emsp-samba-3-6-23-36-el6-8-x86-64" class="headerlink" title="&emsp;    samba-3.6.23-36.el6_8.x86_64"></a>&emsp;    samba-3.6.23-36.el6_8.x86_64</h4><h4 id="emsp-samba-common-3-6-23-36-el6-8-x86-64"><a href="#emsp-samba-common-3-6-23-36-el6-8-x86-64" class="headerlink" title="&emsp;    samba-common-3.6.23-36.el6_8.x86_64"></a>&emsp;    samba-common-3.6.23-36.el6_8.x86_64</h4><h4 id="emsp-samba-swat-3-6-23-36-el6-8-x86-64"><a href="#emsp-samba-swat-3-6-23-36-el6-8-x86-64" class="headerlink" title="&emsp;    samba-swat-3.6.23-36.el6_8.x86_64"></a>&emsp;    samba-swat-3.6.23-36.el6_8.x86_64</h4><h4 id="emsp-samba-winbind-3-6-23-36-el6-8-x86-64"><a href="#emsp-samba-winbind-3-6-23-36-el6-8-x86-64" class="headerlink" title="&emsp;    samba-winbind-3.6.23-36.el6_8.x86_64"></a>&emsp;    samba-winbind-3.6.23-36.el6_8.x86_64</h4><h4 id="emsp-root-localhost-bin"><a href="#emsp-root-localhost-bin" class="headerlink" title="&emsp;    [root@localhost bin]"></a>&emsp;    [root@localhost bin]</h4><h3 id="（2）安装包说明"><a href="#（2）安装包说明" class="headerlink" title="（2）安装包说明"></a>（2）安装包说明</h3><h4 id="emsp-samba-common-3-5-10-125-el6-x86-64-主要提供samba服务器的设置文件与设置文件语法检验程序testparm"><a href="#emsp-samba-common-3-5-10-125-el6-x86-64-主要提供samba服务器的设置文件与设置文件语法检验程序testparm" class="headerlink" title="&emsp;    samba-common-3.5.10-125.el6.x86_64               //主要提供samba服务器的设置文件与设置文件语法检验程序testparm"></a>&emsp;    samba-common-3.5.10-125.el6.x86_64               //主要提供samba服务器的设置文件与设置文件语法检验程序testparm</h4><h4 id="emsp-samba-client-3-5-10-125-el6-x86-64-客户端软件，主要提供linux主机作为客户端时，所需要的工具指令集"><a href="#emsp-samba-client-3-5-10-125-el6-x86-64-客户端软件，主要提供linux主机作为客户端时，所需要的工具指令集" class="headerlink" title="&emsp;    samba-client-3.5.10-125.el6.x86_64                    //客户端软件，主要提供linux主机作为客户端时，所需要的工具指令集"></a>&emsp;    samba-client-3.5.10-125.el6.x86_64                    //客户端软件，主要提供linux主机作为客户端时，所需要的工具指令集</h4><h4 id="emsp-samba-swat-3-5-10-125-el6-x86-64-基于https协议的samba服务器web配置界面"><a href="#emsp-samba-swat-3-5-10-125-el6-x86-64-基于https协议的samba服务器web配置界面" class="headerlink" title="&emsp;    samba-swat-3.5.10-125.el6.x86_64                    //基于https协议的samba服务器web配置界面"></a>&emsp;    samba-swat-3.5.10-125.el6.x86_64                    //基于https协议的samba服务器web配置界面</h4><h4 id="emsp-samba-3-5-10-125-el6-x86-64-服务器端软件，主要提供samba服务器的守护程序，共享文档，日志的轮替，开机"><a href="#emsp-samba-3-5-10-125-el6-x86-64-服务器端软件，主要提供samba服务器的守护程序，共享文档，日志的轮替，开机" class="headerlink" title="&emsp;    samba-3.5.10-125.el6.x86_64                            //服务器端软件，主要提供samba服务器的守护程序，共享文档，日志的轮替，开机"></a>&emsp;    samba-3.5.10-125.el6.x86_64                            //服务器端软件，主要提供samba服务器的守护程序，共享文档，日志的轮替，开机</h4><h3 id="（3）启动Samba服务器"><a href="#（3）启动Samba服务器" class="headerlink" title="（3）启动Samba服务器"></a>（3）启动Samba服务器</h3><h4 id="emsp-通过-etc-init-d-smb-start-stop-restart来启动、关闭、重启Samba服务"><a href="#emsp-通过-etc-init-d-smb-start-stop-restart来启动、关闭、重启Samba服务" class="headerlink" title="&emsp;通过/etc/init.d/smb start/stop/restart来启动、关闭、重启Samba服务"></a>&emsp;通过/etc/init.d/smb start/stop/restart来启动、关闭、重启Samba服务</h4><h3 id="（4）查看Samba服务启动情况"><a href="#（4）查看Samba服务启动情况" class="headerlink" title="（4）查看Samba服务启动情况"></a>（4）查看Samba服务启动情况</h3><h4 id="emsp-service-smb-status"><a href="#emsp-service-smb-status" class="headerlink" title="&emsp;service smb status"></a>&emsp;service smb status</h4><h3 id="（5）设置开机自启动"><a href="#（5）设置开机自启动" class="headerlink" title="（5）设置开机自启动"></a>（5）设置开机自启动</h3><h4 id="emsp-chkconfig-–level-35-smb-on-在3、5级别上自动运行samba服务"><a href="#emsp-chkconfig-–level-35-smb-on-在3、5级别上自动运行samba服务" class="headerlink" title="&emsp;chkconfig –level 35 smb on             //在3、5级别上自动运行samba服务"></a>&emsp;chkconfig –level 35 smb on             //在3、5级别上自动运行samba服务</h4><h2 id="3、配置Samba服务"><a href="#3、配置Samba服务" class="headerlink" title="3、配置Samba服务"></a>3、配置Samba服务</h2><h4 id="Samba的主配置文件为-etc-samba-smb-conf"><a href="#Samba的主配置文件为-etc-samba-smb-conf" class="headerlink" title="Samba的主配置文件为/etc/samba/smb.conf"></a>Samba的主配置文件为/etc/samba/smb.conf</h4><h4 id="主配置文件由两部分构成"><a href="#主配置文件由两部分构成" class="headerlink" title="主配置文件由两部分构成"></a>主配置文件由两部分构成</h4><p>Global Settings (55-245行)</p>
+<h4 id="该设置都是与Samba服务整体运行环境有关的选项，它的设置项目是针对所有共享资源的。"><a href="#该设置都是与Samba服务整体运行环境有关的选项，它的设置项目是针对所有共享资源的。" class="headerlink" title="该设置都是与Samba服务整体运行环境有关的选项，它的设置项目是针对所有共享资源的。"></a>该设置都是与Samba服务整体运行环境有关的选项，它的设置项目是针对所有共享资源的。</h4><p>Share Definitions （246-尾行）</p>
+<h4 id="该设置针对的是共享目录个别的设置，只对当前的共享资源起作用。"><a href="#该设置针对的是共享目录个别的设置，只对当前的共享资源起作用。" class="headerlink" title="该设置针对的是共享目录个别的设置，只对当前的共享资源起作用。"></a>该设置针对的是共享目录个别的设置，只对当前的共享资源起作用。</h4><h4 id="1-备份配置文件，配置自己的选项"><a href="#1-备份配置文件，配置自己的选项" class="headerlink" title="(1)备份配置文件，配置自己的选项"></a>(1)备份配置文件，配置自己的选项</h4><pre><code>#cp -p /etc/samba/smb.conf    /etc/samba/smb.conf.backup
+</code></pre><h4 id="2-设置共享目录为-share"><a href="#2-设置共享目录为-share" class="headerlink" title="(2) 设置共享目录为/share"></a>(2) 设置共享目录为/share</h4><pre><code># 设置匿名用户可以下载或上传共享文件，给/share目录授权为nobody权限
+# chown -R nobody:nobody share/
+
+# smb.conf配置文件增加
+[public]                                          #设置针对的是共享目录个别的设置，只对当前的共享资源起作用
+comment = Public Stuff                            #对共享目录的说明文件，自己可以定义说明信息
+path = /share                                     #用来指定共享的目录，必选项
+public = yes                                      #所有人可查看,等效于guest ok = yes
+</code></pre><h4 id="3-重启smb服务"><a href="#3-重启smb服务" class="headerlink" title="(3) 重启smb服务"></a>(3) 重启smb服务</h4><pre><code>/etc/init.d/smb restart
+/etc/init.d/nmb restart
+</code></pre><h4 id="4-测试smb-conf配置是否正确"><a href="#4-测试smb-conf配置是否正确" class="headerlink" title="(4)测试smb.conf配置是否正确"></a>(4)测试smb.conf配置是否正确</h4><pre><code>testparm
+</code></pre><h4 id="5-访问Samba服务器的共享文件"><a href="#5-访问Samba服务器的共享文件" class="headerlink" title="(5) 访问Samba服务器的共享文件"></a>(5) 访问Samba服务器的共享文件</h4><p>在Linux下访问Samba服务器的共享文件\</p>
+<pre><code># smbclient //192.168.247.131/public
+#出错：session setup failed: NT_STATUS_LOGON_FAILURE
+#原因：执行smbclient命令的用户ID没有成为samba服务的用户
+# smbpasswd -a root
+</code></pre><p>在windows下访问Samba服务器的共享文件</p>
+<pre><code># \\192.168.247.131    
+</code></pre><h3 id="参考链接-1、-CentOS-6-3下Samba服务器的安装与配置"><a href="#参考链接-1、-CentOS-6-3下Samba服务器的安装与配置" class="headerlink" title="参考链接  1、 CentOS 6.3下Samba服务器的安装与配置"></a>参考链接  1、 <a href="http://www.cnblogs.com/mchina/archive/2012/12/18/2816717.html" target="_blank" rel="external">CentOS 6.3下Samba服务器的安装与配置</a></h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://github.ouqunfu.com/2017/03/22/搭建Samba服务.html" data-id="cj0nmxcta0007kipvxmullgkj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/22/笔记.html" class="article-date">
+  <time datetime="2017-03-23T06:40:09.000Z" itemprop="datePublished">2017-03-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/22/笔记.html">笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1、函数"><a href="#1、函数" class="headerlink" title="1、函数"></a>1、函数</h4><pre><code>/*
+* 关键词中的空格替换为&apos;,&apos;
+*/
+function emptyreplace($str) {
+
+    if(empty($str)){
+        return $str;
+    }
+    //替换全角空格为半角空格
+    $str = str_replace(&apos;　&apos;, &apos; &apos;, $str);
+    $arr = explode(&apos; &apos;, $str);
+    foreach($arr as $key =&gt; $v){
+        if(!empty($v)){
+            $new_arr[] = trim($v); 
+        }
+    }
+    $str = implode(&apos;,&apos;, $new_arr);
+    return $str;
+}
+</code></pre><h4 id="2、"><a href="#2、" class="headerlink" title="2、"></a>2、</h4><p>phpmyadmin在使用过程中经常出现“登陆超时（1440秒未活动），请重新登录”，很烦</p>
+<p>解决方法如下：</p>
+<p>修改php.ini，找到</p>
+<p>session.gc_maxlifetime = 1440</p>
+<p>将数值改大就行了，然后使之生效</p>
+<p>EOF;</p>
+<p>试验了一下，结果不好使。</p>
+<p>最终解决方案：</p>
+<p>找到 phpMyAdmin / libraries / config.default.php 文件，打开，修改</p>
+<p>$cfg[‘LoginCookiidity’] = 1440;</p>
+<p>将1440修改成更大的值即可。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://github.ouqunfu.com/2017/03/22/笔记.html" data-id="cj0nmxctj0008kipv7nf8pcho" class="article-share-link">Share</a>
       
       
     </footer>
@@ -304,19 +869,23 @@ hexo generate
       <ul>
         
           <li>
-            <a href="/2017/03/22/test-deploy.html">test-deploy</a>
+            <a href="/2017/03/22/Dependent-依赖.html">Dependent-依赖</a>
           </li>
         
           <li>
-            <a href="/2017/03/22/Linux下使用Hexo搭建github博客.html">(no title)</a>
+            <a href="/2017/03/22/Linux下使用Hexo搭建github博客.html">Linux下使用Hexo搭建github博客</a>
           </li>
         
           <li>
-            <a href="/2017/03/22/github-page-with-hexo.html">github-page-with-hexo</a>
+            <a href="/2017/03/22/centos下安装编译安装git-2.3.0.html">centos下安装编译安装git-2.3.0</a>
           </li>
         
           <li>
-            <a href="/2017/03/22/hello-world.html">Hello World</a>
+            <a href="/2017/03/22/lnmp下部署thinkphp5项目.html">lnmp下部署thinkphp5项目</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/mirrors.html">国内开源镜像mirrors</a>
           </li>
         
       </ul>

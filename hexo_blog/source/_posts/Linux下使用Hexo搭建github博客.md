@@ -1,3 +1,9 @@
+---
+title: Linux下使用Hexo搭建github博客
+date: 2017-03-22 23:40:09
+tags:
+---
+
 #### 参考链接 [Linux下使用Hexo搭建github博客](http://www.cnblogs.com/zhaoyu1995/p/6239950.html)
 
 ### 1、安装nodejs
@@ -44,6 +50,12 @@
     permalink::year/:month/:day/:title.html
     permalink_defaults:
 
+deploy配置
+	deploy:
+	  type: git
+	  repo: git@github.com:ouqunfu/imiaomiao.github.io.git
+	  branch: master
+
 新增文章
 	hexo new'github-page-with-hexo'
 
@@ -53,5 +65,19 @@
     hexo generate
 
 把生成的public目录下的文件放到master分支下
+
+或者配置deploy,发布到github
+
+	hexo deploy
+	出错：ERROR Deployer not found: git
+	解决：npm install hexo-deployer-git --save
+	hexo deploy
+	出错：
+	解决：用 sudo ssh-keygen -t rsa -C “xxx@xxx.com”加上sudo在linux的root目录下创建ssh。
+
+	然后利用cat 命令 gedit 或者vim打开在root目录下的ssh。sudo cat /var/root/.ssh/id_rsa.pub
+	
+	在github上面进行ssh的粘贴。
+
 
 
